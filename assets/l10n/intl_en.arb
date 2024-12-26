@@ -1,0 +1,37 @@
+{
+  "@@locale": "en",
+  "common_no_data": "No Data",
+  "common_ok": "OK",
+  "common_next": "Next",
+  "common_not_applicable": "N/A",
+  "common_confirm": "Confirm",
+  "common_cancel": "Cancel",
+  "common_or": "OR",
+  "common_yes": "Yes",
+  "common_no": "No",
+  "common_retry": "Retry",
+  "apiErrorNetwork": "Network connection error",
+  "@apiErrorNetwork": {
+    "description": "Error message when network connection fails"
+  },
+  "apiErrorServer": "Internal server error",
+  "@apiErrorServer": {
+    "description": "Error message when server has internal error"
+  },
+  "apiErrorUnauthorized": "Unauthorized access",
+  "@apiErrorUnauthorized": {
+    "description": "Error message when user is not authorized"
+  },
+  "apiErrorNotFound": "Resource not found",
+  "@apiErrorNotFound": {
+    "description": "Error message when resource is not found"
+  },
+  "apiErrorBadRequest": "Bad request",
+  "@apiErrorBadRequest": {
+    "description": "Error message when request is invalid"
+  },
+  "apiErrorCancelled": "Request cancelled",
+  "@apiErrorCancelled": {
+    "description": "Error message when request is cancelled"
+  }
+}

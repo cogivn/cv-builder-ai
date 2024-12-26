@@ -1,0 +1,84 @@
+name: cv_builder_ai
+description: "Create a professional CV with AI & templates."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
+  auto_route: ^9.2.2
+  cupertino_icons: ^1.0.8
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  injectable: ^2.5.0
+  get_it: ^8.0.3
+  collection: ^1.19.0
+  dio: ^5.7.0
+  shared_preferences: ^2.3.4
+  path_provider: ^2.1.5
+  uuid: ^4.5.1
+  result_dart: ^2.0.0
+  flutter_config:
+    git:
+      url: https://github.com/cogivn/flutter_config.git
+      ref: master
+  shadcn_ui: ^0.16.3
+  flutter_svg: ^2.0.16
+  talker: ^4.5.4
+  talker_flutter: ^4.5.4
+  talker_dio_logger: ^4.5.4
+  flutter_secure_storage: ^9.2.2
+  rx_shared_preferences: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.14
+  flutter_gen_runner: 5.8.0
+  json_serializable: ^6.9.0
+  injectable_generator: ^2.6.2
+  freezed: ^2.5.7
+  mockito: ^5.4.5
+  auto_route_generator: ^9.0.0
+
+flutter:
+  uses-material-design: true
+
+flutter_gen:
+  output: lib/generated/
+
+  integrations:
+    flutter_svg: true
+    flare_flutter: false
+    lottie: true
+    rive: false
+
+  assets:
+    enabled: true
+    outputs:
+      package_parameter_enabled: false
+      style: dot-delimiter
+
+  fonts:
+    enabled: true
+
+  colors:
+    enabled: true
+    inputs:
+      - assets/color/colors.xml
+
+flutter_intl:
+  enabled: true
+  main_locale: 'en'
+  arb_dir: assets/l10n
+
+
+
+

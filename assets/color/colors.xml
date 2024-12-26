@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="primary">#002C55</color>
+    <color name="material_primary" type="material">#FF5722</color>
+
+    <color name="Background">#FDFEFF</color>
+    <color name="Background/Disabled">#F4F4F4</color>
+
+    <color name="Card/Border">#E4EFF9</color>
+    <color name="Card/Background">#ECF4FF</color>
+    <color name="Card/Blue3">#DAECFD</color>
+    <color name="Card/Unread">#F24B69</color>
+    <color name="Card/Gray">#F5F5F5</color>
+    <color name="Card/LightPink">#F8E7E7</color>
+
+    <color name="Card/Profile/Top">#49FAF7</color>
+    <color name="Card/Profile/Center">#9CFBFA</color>
+    <color name="Card/Shadow">#06284A</color>
+    <color name="Card/Shadow">#06284A</color>
+
+    <color name="Stamp/Card/Top">#E2F1FF</color>
+    <color name="Stamp/Card/Bottom">#A4C9E9</color>
+    <color name="Stamp/Card/Text">#7DBAF2</color>
+
+    <color name="Barrier">#DDDDDD</color>
+    <color name="Radio/Active">#DAECFD</color>
+
+    <color name="Line/Error">#E31818</color>
+    <color name="Line/Divine">#E0E0E0</color>
+    <color name="Line/Divider">#F4F4F4</color>
+    <color name="Line/Default">#212121</color>
+    <color name="Line/Focus">#A4C9E9</color>
+    <color name="Line/DividerSecond">#E5E5EA</color>
+    <color name="Line/None">#88828282</color>
+    <!-- Text-->
+    <color name="Text/Primary">#212121</color>
+    <color name="Text/Secondary">#828282</color>
+    <color name="Text/Error">#E31818</color>
+    <color name="Text/Red">#F24B69</color>
+    <color name="Text/Unselected">#A9A9A9</color>
+    <color name="Text/Selected">#4194DE</color>
+    <color name="Text/Description">#8E8E93</color>
+
+    <color name="Button/Disabled">#F0F0F0</color>
+    <color name="Button/Cupertino">#3478F6</color>
+
+    <color name="Background/Primary">#DAECFD</color>
+    <color name="Background/Red">#F8E7E7</color>
+
+</resources>
