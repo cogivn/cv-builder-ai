@@ -2,10 +2,8 @@ import 'dart:ffi';
 
 import 'package:cv_builder_ai/src/core/extensions/optional_x.dart';
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 import 'package:result_dart/result_dart.dart';
 
-import '../../../core/config/environment.dart';
 import '../../../core/errors/api_error.dart';
 import '../../../core/services/storage_service.dart';
 import '../../../domain/auth/entities/auth_token.dart';

@@ -1,12 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cv_builder_ai/src/core/l10n/messages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../../../core/utils/logger.dart';
 import '../../providers/auth/auth_notifier.dart';
 import '../../router/app_router.dart';
-import 'auth_page.dart';
+import 'components/auth_header.dart';
+import 'components/login_form.dart';
 
 @RoutePage()
 class LoginPage extends ConsumerStatefulWidget {
@@ -47,84 +48,55 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   Widget build(BuildContext context) {
     final state = ref.watch(authNotifierProvider);
 
-    // Listen to auth state changes
     ref.listen(authNotifierProvider, (previous, next) {
-      // if (next.error != null) {
-      //   String errorMessage = next.error.toString();
-      //   if (next.error is ApiError) {
-      //     errorMessage = next.error.as<ApiError>().getErrorMessage(context);
-      //   }
-      //   ScaffoldMessenger.of(context).showSnackBar(
-      //     SnackBar(content: Text(errorMessage)),
-      //   );
-      // }
-
       if (next.isAuthenticated) {
         widget.onLoginResult?.call(true);
-        //TODO context.router.replaceAll([const HomeRoute()]);
       }
     });
 
-    return AuthPage(
-      title: 'Welcome back',
-      subtitle: 'Enter your email to sign in to your account',
-      form: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            ShadInputFormField(
-              controller: _emailController,
-              placeholder: Text('Enter your email'),
-              keyboardType: TextInputType.emailAddress,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter your email';
-                }
-                return null;
-              },
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 400),
+              child: Column(
+                spacing: 32,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  AuthHeader(
+                    title: context.s.loginWelcomeBack,
+                    subtitle: context.s.loginSubtitle,
+                  ),
+                  LoginForm(
+                    formKey: _formKey,
+                    emailController: _emailController,
+                    passwordController: _passwordController,
+                    isLoading: state.isLoading,
+                    onSubmit: _onSubmit,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(context.s.loginNoAccount),
+                      TextButton(
+                        onPressed: () =>
+                            context.router.push(const RegisterRoute()),
+                        child: Text(
+                          context.s.loginSignUpButton,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 16),
-            ShadInputFormField(
-              controller: _passwordController,
-              placeholder: Text('Enter your password'),
-              obscureText: true,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter your password';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 24),
-            ShadButton(
-              onPressed: state.isLoading ? null : _onSubmit,
-              child: state.isLoading
-                  ? const SizedBox.square(
-                      dimension: 20,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : const Text('Sign in'),
-            ),
-          ],
+          ),
         ),
       ),
-      actions: [
-        TextButton(
-          // TODO onPressed: () => context.router.push(const ForgotPasswordRoute()),
-          onPressed: null,
-          child: const Text('Forgot password?'),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Don't have an account?"),
-            TextButton(
-              onPressed: () => context.router.push(const RegisterRoute()),
-              child: const Text('Sign up'),
-            ),
-          ],
-        ),
-      ],
     );
   }
-} 
+}

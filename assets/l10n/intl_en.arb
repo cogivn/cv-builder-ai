@@ -47,5 +47,93 @@
     "placeholders": {
       "maxSizeInMB": {}
     }
+  },
+  "loginWelcomeBack": "Welcome back",
+  "@loginWelcomeBack": {
+    "description": "Title shown on the login page"
+  },
+  "loginSubtitle": "Enter your email to sign in to your account",
+  "@loginSubtitle": {
+    "description": "Subtitle shown on the login page"
+  },
+  "loginEmailPlaceholder": "Enter your email",
+  "@loginEmailPlaceholder": {
+    "description": "Placeholder text for email input field"
+  },
+  "loginEmailRequired": "Please enter your email",
+  "@loginEmailRequired": {
+    "description": "Validation message when email is empty"
+  },
+  "loginPasswordPlaceholder": "Enter your password",
+  "@loginPasswordPlaceholder": {
+    "description": "Placeholder text for password input field"
+  },
+  "loginPasswordRequired": "Please enter your password",
+  "@loginPasswordRequired": {
+    "description": "Validation message when password is empty"
+  },
+  "loginSignInButton": "Sign in",
+  "@loginSignInButton": {
+    "description": "Text for the sign in button"
+  },
+  "loginForgotPassword": "Forgot password?",
+  "@loginForgotPassword": {
+    "description": "Text for the forgot password link"
+  },
+  "loginNoAccount": "Don't have an account?",
+  "@loginNoAccount": {
+    "description": "Text shown before the sign up link"
+  },
+  "loginSignUpButton": "Sign up",
+  "@loginSignUpButton": {
+    "description": "Text for the sign up link"
+  },
+  "registerCreateAccount": "Create an account",
+  "@registerCreateAccount": {
+    "description": "Title shown on the register page"
+  },
+  "registerSubtitle": "Enter your email below to create your account",
+  "@registerSubtitle": {
+    "description": "Subtitle shown on the register page"
+  },
+  "registerNamePlaceholder": "Enter your name",
+  "@registerNamePlaceholder": {
+    "description": "Placeholder text for name input field"
+  },
+  "registerNameRequired": "Please enter your name",
+  "@registerNameRequired": {
+    "description": "Validation message when name is empty"
+  },
+  "registerEmailPlaceholder": "Enter your email",
+  "@registerEmailPlaceholder": {
+    "description": "Placeholder text for email input field"
+  },
+  "registerEmailRequired": "Please enter your email",
+  "@registerEmailRequired": {
+    "description": "Validation message when email is empty"
+  },
+  "registerPasswordPlaceholder": "Enter your password",
+  "@registerPasswordPlaceholder": {
+    "description": "Placeholder text for password input field"
+  },
+  "registerPasswordRequired": "Please enter your password",
+  "@registerPasswordRequired": {
+    "description": "Validation message when password is empty"
+  },
+  "registerPasswordTooShort": "Password must be at least 6 characters",
+  "@registerPasswordTooShort": {
+    "description": "Validation message when password is too short"
+  },
+  "registerSignUpButton": "Sign up",
+  "@registerSignUpButton": {
+    "description": "Text for the sign up button"
+  },
+  "registerHaveAccount": "Already have an account?",
+  "@registerHaveAccount": {
+    "description": "Text shown before the sign in link"
+  },
+  "registerSignInButton": "Sign in",
+  "@registerSignInButton": {
+    "description": "Text for the sign in link"
   }
 }

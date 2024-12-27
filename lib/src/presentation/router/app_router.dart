@@ -11,8 +11,9 @@ part 'app_router.gr.dart';
 @singleton
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
+  final AuthGuard _authGuard;
 
-  AppRouter();
+  AppRouter(this._authGuard);
 
   @override
   List<AutoRoute> get routes => [

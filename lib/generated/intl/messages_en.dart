@@ -51,6 +51,46 @@ class MessageLookup extends MessageLookupByLibrary {
         "common_retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "common_yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "fileSizeExceedsLimit": m0,
-        "fileTypeNotSupported": m1
+        "fileTypeNotSupported": m1,
+        "loginEmailPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "loginEmailRequired":
+            MessageLookupByLibrary.simpleMessage("Please enter your email"),
+        "loginForgotPassword":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "loginNoAccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "loginPasswordPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "loginPasswordRequired":
+            MessageLookupByLibrary.simpleMessage("Please enter your password"),
+        "loginSignInButton": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "loginSignUpButton": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "loginSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Enter your email to sign in to your account"),
+        "loginWelcomeBack":
+            MessageLookupByLibrary.simpleMessage("Welcome back"),
+        "registerCreateAccount":
+            MessageLookupByLibrary.simpleMessage("Create an account"),
+        "registerEmailPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "registerEmailRequired":
+            MessageLookupByLibrary.simpleMessage("Please enter your email"),
+        "registerHaveAccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "registerNamePlaceholder":
+            MessageLookupByLibrary.simpleMessage("Enter your name"),
+        "registerNameRequired":
+            MessageLookupByLibrary.simpleMessage("Please enter your name"),
+        "registerPasswordPlaceholder":
+            MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "registerPasswordRequired":
+            MessageLookupByLibrary.simpleMessage("Please enter your password"),
+        "registerPasswordTooShort": MessageLookupByLibrary.simpleMessage(
+            "Password must be at least 6 characters"),
+        "registerSignInButton": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "registerSignUpButton": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "registerSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Enter your email below to create your account")
       };
 }

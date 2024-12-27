@@ -229,6 +229,226 @@ class S {
       args: [maxSizeInMB],
     );
   }
+
+  /// `Welcome back`
+  String get loginWelcomeBack {
+    return Intl.message(
+      'Welcome back',
+      name: 'loginWelcomeBack',
+      desc: 'Title shown on the login page',
+      args: [],
+    );
+  }
+
+  /// `Enter your email to sign in to your account`
+  String get loginSubtitle {
+    return Intl.message(
+      'Enter your email to sign in to your account',
+      name: 'loginSubtitle',
+      desc: 'Subtitle shown on the login page',
+      args: [],
+    );
+  }
+
+  /// `Enter your email`
+  String get loginEmailPlaceholder {
+    return Intl.message(
+      'Enter your email',
+      name: 'loginEmailPlaceholder',
+      desc: 'Placeholder text for email input field',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email`
+  String get loginEmailRequired {
+    return Intl.message(
+      'Please enter your email',
+      name: 'loginEmailRequired',
+      desc: 'Validation message when email is empty',
+      args: [],
+    );
+  }
+
+  /// `Enter your password`
+  String get loginPasswordPlaceholder {
+    return Intl.message(
+      'Enter your password',
+      name: 'loginPasswordPlaceholder',
+      desc: 'Placeholder text for password input field',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get loginPasswordRequired {
+    return Intl.message(
+      'Please enter your password',
+      name: 'loginPasswordRequired',
+      desc: 'Validation message when password is empty',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get loginSignInButton {
+    return Intl.message(
+      'Sign in',
+      name: 'loginSignInButton',
+      desc: 'Text for the sign in button',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get loginForgotPassword {
+    return Intl.message(
+      'Forgot password?',
+      name: 'loginForgotPassword',
+      desc: 'Text for the forgot password link',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get loginNoAccount {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'loginNoAccount',
+      desc: 'Text shown before the sign up link',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get loginSignUpButton {
+    return Intl.message(
+      'Sign up',
+      name: 'loginSignUpButton',
+      desc: 'Text for the sign up link',
+      args: [],
+    );
+  }
+
+  /// `Create an account`
+  String get registerCreateAccount {
+    return Intl.message(
+      'Create an account',
+      name: 'registerCreateAccount',
+      desc: 'Title shown on the register page',
+      args: [],
+    );
+  }
+
+  /// `Enter your email below to create your account`
+  String get registerSubtitle {
+    return Intl.message(
+      'Enter your email below to create your account',
+      name: 'registerSubtitle',
+      desc: 'Subtitle shown on the register page',
+      args: [],
+    );
+  }
+
+  /// `Enter your name`
+  String get registerNamePlaceholder {
+    return Intl.message(
+      'Enter your name',
+      name: 'registerNamePlaceholder',
+      desc: 'Placeholder text for name input field',
+      args: [],
+    );
+  }
+
+  /// `Please enter your name`
+  String get registerNameRequired {
+    return Intl.message(
+      'Please enter your name',
+      name: 'registerNameRequired',
+      desc: 'Validation message when name is empty',
+      args: [],
+    );
+  }
+
+  /// `Enter your email`
+  String get registerEmailPlaceholder {
+    return Intl.message(
+      'Enter your email',
+      name: 'registerEmailPlaceholder',
+      desc: 'Placeholder text for email input field',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email`
+  String get registerEmailRequired {
+    return Intl.message(
+      'Please enter your email',
+      name: 'registerEmailRequired',
+      desc: 'Validation message when email is empty',
+      args: [],
+    );
+  }
+
+  /// `Enter your password`
+  String get registerPasswordPlaceholder {
+    return Intl.message(
+      'Enter your password',
+      name: 'registerPasswordPlaceholder',
+      desc: 'Placeholder text for password input field',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get registerPasswordRequired {
+    return Intl.message(
+      'Please enter your password',
+      name: 'registerPasswordRequired',
+      desc: 'Validation message when password is empty',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters`
+  String get registerPasswordTooShort {
+    return Intl.message(
+      'Password must be at least 6 characters',
+      name: 'registerPasswordTooShort',
+      desc: 'Validation message when password is too short',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get registerSignUpButton {
+    return Intl.message(
+      'Sign up',
+      name: 'registerSignUpButton',
+      desc: 'Text for the sign up button',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get registerHaveAccount {
+    return Intl.message(
+      'Already have an account?',
+      name: 'registerHaveAccount',
+      desc: 'Text shown before the sign in link',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get registerSignInButton {
+    return Intl.message(
+      'Sign in',
+      name: 'registerSignInButton',
+      desc: 'Text for the sign in link',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

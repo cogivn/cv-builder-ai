@@ -56,7 +56,6 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i791.AppLifecycle(),
       dispose: (i) => i.dispose(),
     );
-    gh.singleton<_i421.AppRouter>(() => _i421.AppRouter());
     gh.lazySingleton<_i766.AuthRepository>(() => _i609.AuthRepositoryMockup());
     gh.singleton<_i677.ContentRepository>(() => _i21.ContentRepositoryMockup());
     gh.factory<String>(
@@ -77,6 +76,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<String>(instanceName: 'baseUrl'),
           gh<_i993.Talker>(),
         ));
+    gh.singleton<_i421.AppRouter>(
+        () => _i421.AppRouter(gh<_i1039.AuthGuard>()));
     return this;
   }
 }
