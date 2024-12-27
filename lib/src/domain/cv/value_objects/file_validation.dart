@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../generated/l10n.dart';
+
 part 'file_validation.freezed.dart';
 
 @freezed
@@ -22,10 +24,10 @@ class CVFile with _$CVFile {
 
   String? get validationError {
     if (!isValidType) {
-      return 'File type not supported. Allowed types: ${allowedTypes.join(", ")}';
+      return S.current.fileTypeNotSupported(allowedTypes.join(", "));
     }
     if (!isValidSize) {
-      return 'File size exceeds maximum limit of $maxSizeInMB MB';
+      return S.current.fileSizeExceedsLimit(maxSizeInMB);
     }
     return null;
   }

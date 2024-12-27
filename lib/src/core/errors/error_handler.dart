@@ -1,7 +1,10 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:talker_flutter/talker_flutter.dart';
+
+import '../../../generated/l10n.dart';
 import '../utils/logger.dart';
 
 class AppErrorHandler {
@@ -43,7 +46,7 @@ class AppErrorHandler {
               child: Text(
                 kDebugMode
                     ? details.exception.toString()
-                    : 'Something went wrong',
+                    : S.current.apiErrorNotFound,
                 style: const TextStyle(color: Colors.red),
                 textAlign: TextAlign.center,
               ),

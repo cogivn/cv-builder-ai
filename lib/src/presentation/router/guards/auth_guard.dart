@@ -1,19 +1,27 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cv_builder_ai/src/domain/auth/repositories/auth_repository.dart';
+import 'package:injectable/injectable.dart';
 
+import '../app_router.dart';
+
+@injectable
 class AuthGuard extends AutoRouteGuard {
+  final AuthRepository _authService;
+
+  AuthGuard(this._authService);
+
   @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {
-    // Check if user is authenticated
-    //final isAuthenticated = false;
-    //if (isAuthenticated) {
-    //  resolver.next(true);
-    //} else {
-    // router.push(
-    //   LoginRoute(
-    //     onLoginResult: (success) {
-    //       resolver.next(success);
-    //     },
-    //   ),
-    // );
+  Future<void> onNavigation(
+    NavigationResolver resolver,
+    StackRouter router,
+  ) async {
+    final result = await _authService.isAuthenticated();
+    final isLoggedIn = result.fold((r) => r, (_) => false);
+
+    if (isLoggedIn) {
+      resolver.next(true);
+    } else {
+      router.push(LoginRoute(onLoginResult: resolver.next));
+    }
   }
 }

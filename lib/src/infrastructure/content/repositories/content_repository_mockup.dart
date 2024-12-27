@@ -6,8 +6,7 @@ import '../../../core/config/environment.dart';
 import '../../../domain/content/entities/content.dart';
 import '../../../domain/content/repositories/content_repository.dart';
 
-@Injectable(as: ContentRepository)
-@alpha
+@Singleton(as: ContentRepository)
 class ContentRepositoryMockup implements ContentRepository {
   final _mockResources = <Resource>[
     Resource(

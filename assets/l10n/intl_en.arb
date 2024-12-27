@@ -33,5 +33,19 @@
   "apiErrorCancelled": "Request cancelled",
   "@apiErrorCancelled": {
     "description": "Error message when request is cancelled"
+  },
+  "fileTypeNotSupported": "File type not supported. Allowed types: {allowedTypes}",
+  "@fileTypeNotSupported": {
+    "description": "Error message when file type is not supported",
+    "placeholders": {
+      "allowedTypes": {}
+    }
+  },
+  "fileSizeExceedsLimit": "File size exceeds maximum limit of {maxSizeInMB} MB",
+  "@fileSizeExceedsLimit": {
+    "description": "Error message when file size exceeds the limit",
+    "placeholders": {
+      "maxSizeInMB": {}
+    }
   }
 }

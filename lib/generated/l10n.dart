@@ -209,6 +209,26 @@ class S {
       args: [],
     );
   }
+
+  /// `File type not supported. Allowed types: {allowedTypes}`
+  String fileTypeNotSupported(Object allowedTypes) {
+    return Intl.message(
+      'File type not supported. Allowed types: $allowedTypes',
+      name: 'fileTypeNotSupported',
+      desc: 'Error message when file type is not supported',
+      args: [allowedTypes],
+    );
+  }
+
+  /// `File size exceeds maximum limit of {maxSizeInMB} MB`
+  String fileSizeExceedsLimit(Object maxSizeInMB) {
+    return Intl.message(
+      'File size exceeds maximum limit of $maxSizeInMB MB',
+      name: 'fileSizeExceedsLimit',
+      desc: 'Error message when file size exceeds the limit',
+      args: [maxSizeInMB],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

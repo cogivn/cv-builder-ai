@@ -1,7 +1,8 @@
-import 'package:cv_builder_ai/src/core/config/di.config.dart';
-import 'package:cv_builder_ai/src/core/config/environment.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+
+import 'di.config.dart';
+import 'environment.dart';
 
 final getIt = GetIt.instance;
 

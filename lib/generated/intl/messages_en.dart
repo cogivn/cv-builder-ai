@@ -20,6 +20,12 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(maxSizeInMB) =>
+      "File size exceeds maximum limit of ${maxSizeInMB} MB";
+
+  static String m1(allowedTypes) =>
+      "File type not supported. Allowed types: ${allowedTypes}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "apiErrorBadRequest":
@@ -43,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "common_ok": MessageLookupByLibrary.simpleMessage("OK"),
         "common_or": MessageLookupByLibrary.simpleMessage("OR"),
         "common_retry": MessageLookupByLibrary.simpleMessage("Retry"),
-        "common_yes": MessageLookupByLibrary.simpleMessage("Yes")
+        "common_yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "fileSizeExceedsLimit": m0,
+        "fileTypeNotSupported": m1
       };
 }
