@@ -1,10 +1,12 @@
 import 'package:result_dart/result_dart.dart';
 
 import '../entities/auth_token.dart';
+import '../value_objects/email.dart';
 import '../value_objects/password.dart';
-import '../../user/value_objects/email.dart';
 
 abstract class AuthRepository {
+  AuthToken? get currentToken;
+
   Future<Result<AuthToken>> signIn({
     required Email email,
     required Password password,
@@ -20,12 +22,12 @@ abstract class AuthRepository {
   
   Future<Result<void>> signOut();
   
-  Future<Result<void>> forgotPassword(Email email);
+  Future<Result<bool>> isLoggedIn();
   
+  Future<Result<void>> forgotPassword(Email email);
+
   Future<Result<void>> resetPassword({
     required String token,
     required Password newPassword,
   });
-
-  Future<Result<bool>> isAuthenticated();
-} 
+}

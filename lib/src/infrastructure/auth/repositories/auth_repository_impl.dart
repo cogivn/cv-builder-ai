@@ -1,20 +1,18 @@
-import 'dart:ffi';
-
-import 'package:cv_builder_ai/src/core/extensions/optional_x.dart';
-import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:result_dart/result_dart.dart';
 
 import '../../../core/errors/api_error.dart';
-import '../../../core/services/storage_service.dart';
 import '../../../domain/auth/entities/auth_token.dart';
 import '../../../domain/auth/repositories/auth_repository.dart';
+import '../../../domain/auth/value_objects/email.dart';
 import '../../../domain/auth/value_objects/password.dart';
-import '../../../domain/user/value_objects/email.dart';
 
+@LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  final Dio _dio;
+  AuthToken? _token;
 
-  AuthRepositoryImpl(this._dio);
+  @override
+  AuthToken? get currentToken => _token;
 
   @override
   Future<Result<AuthToken>> signIn({
@@ -22,18 +20,36 @@ class AuthRepositoryImpl implements AuthRepository {
     required Password password,
   }) async {
     try {
-      final response = await _dio.post(
-        '/auth/login',
-        data: {
-          'email': email.value,
-          'password': password.value,
-        },
-      );
+      // TODO: Implement actual sign in logic
+      if (!email.isValid) {
+        return Failure(const ApiError.request(
+          message: 'Invalid email format',
+          code: 'INVALID_EMAIL',
+          statusCode: 400,
+        ));
+      }
+      if (!password.isValid) {
+        return Failure(const ApiError.request(
+          message: 'Invalid password format',
+          code: 'INVALID_PASSWORD',
+          statusCode: 400,
+        ));
+      }
 
-      final token = AuthToken.fromJson(response.data);
-      return Success(token);
-    } on DioException catch (e) {
-      return Failure(e.error as ApiError);
+      // Simulate network delay
+      await Future.delayed(const Duration(seconds: 1));
+      _token = AuthToken(
+        accessToken: 'mock_access_token',
+        refreshToken: 'mock_refresh_token',
+        expiresAt: DateTime.now().add(const Duration(hours: 1)),
+      );
+      return Success(_token!);
+    } catch (e) {
+      return Failure(ApiError.request(
+        message: e.toString(),
+        code: 'UNKNOWN_ERROR',
+        statusCode: 500,
+      ));
     }
   }
 
@@ -44,58 +60,129 @@ class AuthRepositoryImpl implements AuthRepository {
     required String fullName,
   }) async {
     try {
-      final response = await _dio.post(
-        '/auth/register',
-        data: {
-          'email': email.value,
-          'password': password.value,
-          'fullName': fullName,
-        },
+      // TODO: Implement actual sign up logic
+      if (!email.isValid) {
+        return Failure(const ApiError.request(
+          message: 'Invalid email format',
+          code: 'INVALID_EMAIL',
+          statusCode: 400,
+        ));
+      }
+      if (!password.isValid) {
+        return Failure(const ApiError.request(
+          message: 'Invalid password format',
+          code: 'INVALID_PASSWORD',
+          statusCode: 400,
+        ));
+      }
+      if (fullName.isEmpty) {
+        return Failure(const ApiError.request(
+          message: 'Full name is required',
+          code: 'INVALID_FULL_NAME',
+          statusCode: 400,
+        ));
+      }
+
+      // Simulate network delay
+      await Future.delayed(const Duration(seconds: 1));
+      _token = AuthToken(
+        accessToken: 'mock_access_token',
+        refreshToken: 'mock_refresh_token',
+        expiresAt: DateTime.now().add(const Duration(hours: 1)),
       );
-
-      final token = AuthToken.fromJson(response.data);
-      return Success(token);
-    } on DioException catch (e) {
-      return Failure(e.error as ApiError);
-    }
-  }
-
-  @override
-  Future<Result<void>> signOut() async {
-    try {
-      await _dio.post('/auth/logout');
-      await Storage.setAccessToken(null);
-      return const Success(Void);
-    } on DioException catch (e) {
-      return Failure(e.error as ApiError);
+      return Success(_token!);
+    } catch (e) {
+      return Failure(ApiError.request(
+        message: e.toString(),
+        code: 'UNKNOWN_ERROR',
+        statusCode: 500,
+      ));
     }
   }
 
   @override
   Future<Result<AuthToken>> refreshToken(String refreshToken) async {
     try {
-      final response = await _dio.post(
-        '/auth/refresh',
-        data: {'refreshToken': refreshToken},
-      );
+      // TODO: Implement actual token refresh logic
+      if (refreshToken.isEmpty) {
+        return Failure(const ApiError.request(
+          message: 'Refresh token is required',
+          code: 'INVALID_REFRESH_TOKEN',
+          statusCode: 400,
+        ));
+      }
 
-      final token = AuthToken.fromJson(response.data);
-      return Success(token);
-    } on DioException catch (e) {
-      return Failure(e.error as ApiError);
+      // Simulate network delay
+      await Future.delayed(const Duration(seconds: 1));
+      _token = AuthToken(
+        accessToken: 'new_mock_access_token',
+        refreshToken: 'new_mock_refresh_token',
+        expiresAt: DateTime.now().add(const Duration(hours: 1)),
+      );
+      return Success(_token!);
+    } catch (e) {
+      return Failure(ApiError.request(
+        message: e.toString(),
+        code: 'UNKNOWN_ERROR',
+        statusCode: 500,
+      ));
+    }
+  }
+
+  @override
+  Future<Result<void>> signOut() async {
+    try {
+      // TODO: Implement actual sign out logic
+      // Simulate network delay
+      await Future.delayed(const Duration(seconds: 1));
+      _token = null;
+      return const Success(());
+    } catch (e) {
+      return Failure(ApiError.request(
+        message: e.toString(),
+        code: 'UNKNOWN_ERROR',
+        statusCode: 500,
+      ));
+    }
+  }
+
+  @override
+  Future<Result<bool>> isLoggedIn() async {
+    try {
+      // TODO: Implement actual authentication check
+      // For now, just check if we have a token
+      await Future.delayed(const Duration(seconds: 1));
+      return Success(_token != null);
+    } catch (e) {
+      return Failure(ApiError.request(
+        message: e.toString(),
+        code: 'UNKNOWN_ERROR',
+        statusCode: 500,
+      ));
     }
   }
 
   @override
   Future<Result<void>> forgotPassword(Email email) async {
     try {
-      await _dio.post(
-        '/auth/forgot-password',
-        data: {'email': email.value},
-      );
-      return const Success(Void);
-    } on DioException catch (e) {
-      return Failure(e.error as ApiError);
+      // TODO: Implement actual forgot password logic
+      if (!email.isValid) {
+        return Failure(const ApiError.request(
+          message: 'Invalid email format',
+          code: 'INVALID_EMAIL',
+          statusCode: 400,
+        ));
+      }
+
+      // Simulate network delay
+      await Future.delayed(const Duration(seconds: 1));
+      return const Success(());
+    } catch (e) {
+      return Failure(ApiError.request(
+        message: e.toString(),
+        code: 'UNKNOWN_ERROR',
+        statusCode: 500,
+      ));
     }
   }
 
@@ -105,26 +192,31 @@ class AuthRepositoryImpl implements AuthRepository {
     required Password newPassword,
   }) async {
     try {
-      await _dio.post(
-        '/auth/reset-password',
-        data: {
-          'token': token,
-          'password': newPassword.value,
-        },
-      );
-      return const Success(Void);
-    } on DioException catch (e) {
-      return Failure(e.error as ApiError);
-    }
-  }
+      // TODO: Implement actual password reset logic
+      if (token.isEmpty) {
+        return Failure(const ApiError.request(
+          message: 'Reset token is required',
+          code: 'INVALID_RESET_TOKEN',
+          statusCode: 400,
+        ));
+      }
+      if (!newPassword.isValid) {
+        return Failure(const ApiError.request(
+          message: 'Invalid password format',
+          code: 'INVALID_PASSWORD',
+          statusCode: 400,
+        ));
+      }
 
-  @override
-  Future<Result<bool>> isAuthenticated() async {
-    try {
-      final token = Storage.accessToken;
-      return Success(token.isNotNullOrEmpty);
+      // Simulate network delay
+      await Future.delayed(const Duration(seconds: 1));
+      return const Success(());
     } catch (e) {
-      return const Success(false);
+      return Failure(ApiError.request(
+        message: e.toString(),
+        code: 'UNKNOWN_ERROR',
+        statusCode: 500,
+      ));
     }
   }
-} 
+}

@@ -449,6 +449,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Welcome back,`
+  String get dashboardWelcomeBack {
+    return Intl.message(
+      'Welcome back,',
+      name: 'dashboardWelcomeBack',
+      desc: 'Welcome message on dashboard',
+      args: [],
+    );
+  }
+
+  /// `Quick Actions`
+  String get dashboardQuickActions {
+    return Intl.message(
+      'Quick Actions',
+      name: 'dashboardQuickActions',
+      desc: 'Title for quick actions section',
+      args: [],
+    );
+  }
+
+  /// `Create CV`
+  String get dashboardCreateCV {
+    return Intl.message(
+      'Create CV',
+      name: 'dashboardCreateCV',
+      desc: 'Button to create new CV',
+      args: [],
+    );
+  }
+
+  /// `My CVs`
+  String get dashboardMyCVs {
+    return Intl.message(
+      'My CVs',
+      name: 'dashboardMyCVs',
+      desc: 'Button to view user\'s CVs',
+      args: [],
+    );
+  }
+
+  /// `AI Analysis`
+  String get dashboardAIAnalysis {
+    return Intl.message(
+      'AI Analysis',
+      name: 'dashboardAIAnalysis',
+      desc: 'Button to access AI analysis features',
+      args: [],
+    );
+  }
+
+  /// `Job Matches`
+  String get dashboardJobMatches {
+    return Intl.message(
+      'Job Matches',
+      name: 'dashboardJobMatches',
+      desc: 'Button to view job matches',
+      args: [],
+    );
+  }
+
+  /// `Recent Activity`
+  String get dashboardRecentActivity {
+    return Intl.message(
+      'Recent Activity',
+      name: 'dashboardRecentActivity',
+      desc: 'Title for recent activity section',
+      args: [],
+    );
+  }
+
+  /// `Last edited {days} days ago`
+  String dashboardLastEdited(String days) {
+    return Intl.message(
+      'Last edited $days days ago',
+      name: 'dashboardLastEdited',
+      desc: 'Shows when a CV was last edited',
+      args: [days],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

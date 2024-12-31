@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cv_builder_ai/src/core/l10n/messages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/l10n/messages.dart';
 import '../../../core/utils/logger.dart';
-import '../../providers/auth/auth_notifier.dart';
 import '../../router/app_router.dart';
 import 'components/auth_header.dart';
 import 'components/register_form.dart';
+import 'controllers/auth_controller.dart';
 
 @RoutePage()
 class RegisterPage extends ConsumerStatefulWidget {
@@ -37,10 +37,10 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     if (!_formKey.currentState!.validate()) return;
 
     try {
-      await ref.read(authNotifierProvider.notifier).signUp(
-            _emailController.text,
-            _passwordController.text,
-            _nameController.text,
+      await ref.read(authControllerProvider.notifier).signUp(
+            email: _emailController.text,
+            password: _passwordController.text,
+            fullName: _nameController.text,
           );
     } catch (e, stack) {
       logger.e('Register failed', error: e, stackTrace: stack);
@@ -49,12 +49,15 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(authNotifierProvider);
+    final state = ref.watch(authControllerProvider);
 
-    ref.listen(authNotifierProvider, (previous, next) {
-      if (next.isAuthenticated) {
-        widget.onRegisterResult?.call(true);
-      }
+    ref.listen(authControllerProvider, (previous, next) {
+      next.whenOrNull(
+        authenticated: (token) => widget.onRegisterResult?.call(true),
+        error: (message) => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(message)),
+        ),
+      );
     });
 
     return Scaffold(
@@ -65,7 +68,6 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
             child: Container(
               constraints: const BoxConstraints(maxWidth: 400),
               child: Column(
-                spacing: 32,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -73,14 +75,19 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                     title: context.s.registerCreateAccount,
                     subtitle: context.s.registerSubtitle,
                   ),
+                  const SizedBox(height: 32),
                   RegisterForm(
                     formKey: _formKey,
                     nameController: _nameController,
                     emailController: _emailController,
                     passwordController: _passwordController,
-                    isLoading: state.isLoading,
+                    isLoading: state.maybeWhen(
+                      loading: () => true,
+                      orElse: () => false,
+                    ),
                     onSubmit: _onSubmit,
                   ),
+                  const SizedBox(height: 32),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

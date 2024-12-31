@@ -29,6 +29,25 @@ class CVListRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DashboardPage]
+class DashboardRoute extends PageRouteInfo<void> {
+  const DashboardRoute({List<PageRouteInfo>? children})
+      : super(
+          DashboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DashboardRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DashboardPage();
+    },
+  );
+}
+
+/// generated route for
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
   LoginRoute({
@@ -77,10 +96,17 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [RegisterPage]
-class RegisterRoute extends PageRouteInfo<void> {
-  const RegisterRoute({List<PageRouteInfo>? children})
-      : super(
+class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
+  RegisterRoute({
+    Key? key,
+    void Function(bool)? onRegisterResult,
+    List<PageRouteInfo>? children,
+  }) : super(
           RegisterRoute.name,
+          args: RegisterRouteArgs(
+            key: key,
+            onRegisterResult: onRegisterResult,
+          ),
           initialChildren: children,
         );
 
@@ -89,7 +115,47 @@ class RegisterRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const RegisterPage();
+      final args = data.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
+      return RegisterPage(
+        key: args.key,
+        onRegisterResult: args.onRegisterResult,
+      );
+    },
+  );
+}
+
+class RegisterRouteArgs {
+  const RegisterRouteArgs({
+    this.key,
+    this.onRegisterResult,
+  });
+
+  final Key? key;
+
+  final void Function(bool)? onRegisterResult;
+
+  @override
+  String toString() {
+    return 'RegisterRouteArgs{key: $key, onRegisterResult: $onRegisterResult}';
+  }
+}
+
+/// generated route for
+/// [SplashPage]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute({List<PageRouteInfo>? children})
+      : super(
+          SplashRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SplashRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SplashPage();
     },
   );
 }

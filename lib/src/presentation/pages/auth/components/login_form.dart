@@ -74,53 +74,48 @@ class _EmailField extends StatelessWidget {
     final colorScheme = theme.colorScheme;
     final radius = BorderRadius.circular(12);
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: radius,
+    return ShadInputFormField(
+      controller: controller,
+      placeholder: Text(
+        context.s.loginEmailPlaceholder,
+        style: theme.textTheme.p.copyWith(
+          color: Colors.white.withValues(alpha: 0.5),
+        ),
       ),
-      child: ShadInputFormField(
-        controller: controller,
-        placeholder: Text(
-          context.s.loginEmailPlaceholder,
-          style: theme.textTheme.p.copyWith(
-            color: Colors.white.withOpacity(0.5),
-          ),
+      style: theme.textTheme.h3.copyWith(color: Colors.white),
+      keyboardType: TextInputType.emailAddress,
+      autofillHints: const [AutofillHints.email],
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+      decoration: ShadDecoration(
+        secondaryBorder: ShadBorder.all(
+          padding: const EdgeInsets.all(4),
+          width: 0,
         ),
-        keyboardType: TextInputType.emailAddress,
-        autofillHints: const [AutofillHints.email],
-        style: theme.textTheme.h3.copyWith(color: Colors.white),
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-        decoration: ShadDecoration(
-          secondaryBorder: ShadBorder.all(
-            padding: const EdgeInsets.all(4),
-            width: 0,
-          ),
-          secondaryFocusedBorder: ShadBorder.all(
-            width: 2,
-            color: colorScheme.ring,
-            radius: radius.add(radius / 2),
-            padding: const EdgeInsets.all(2),
-          ),
-          labelStyle: theme.textTheme.h4.copyWith(
-            fontWeight: FontWeight.w500,
-            color: colorScheme.foreground,
-          ),
-          errorStyle: theme.textTheme.small.copyWith(
-            fontWeight: FontWeight.w500,
-            color: colorScheme.destructive,
-          ),
+        secondaryFocusedBorder: ShadBorder.all(
+          width: 2,
+          color: colorScheme.ring,
+          radius: radius.add(radius / 2),
+          padding: const EdgeInsets.all(2),
         ),
-        suffix: const Padding(
-          padding: EdgeInsets.only(right: 12),
-          child: Icon(Icons.alternate_email, size: 20, color: Colors.white54),
+        labelStyle: theme.textTheme.h4.copyWith(
+          fontWeight: FontWeight.w500,
+          color: colorScheme.foreground,
         ),
-        validator: (value) {
-          if (value.isEmpty) {
-            return context.s.loginEmailRequired;
-          }
-          return null;
-        },
+        errorStyle: theme.textTheme.small.copyWith(
+          fontWeight: FontWeight.w500,
+          color: colorScheme.destructive,
+        ),
       ),
+      suffix: const Padding(
+        padding: EdgeInsets.only(right: 12),
+        child: Icon(Icons.alternate_email, size: 20, color: Colors.white54),
+      ),
+      validator: (value) {
+        if (value.isEmpty) {
+          return context.s.loginEmailRequired;
+        }
+        return null;
+      },
     );
   }
 }
@@ -147,7 +142,7 @@ class _PasswordField extends StatelessWidget {
       placeholder: Text(
         context.s.loginPasswordPlaceholder,
         style: theme.textTheme.p.copyWith(
-          color: Colors.white.withOpacity(0.5),
+          color: Colors.white.withValues(alpha: 0.5),
         ),
       ),
       style: theme.textTheme.h3.copyWith(color: Colors.white),

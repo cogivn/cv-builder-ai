@@ -15,7 +15,7 @@ class AuthGuard extends AutoRouteGuard {
     NavigationResolver resolver,
     StackRouter router,
   ) async {
-    final result = await _authService.isAuthenticated();
+    final result = await _authService.isLoggedIn();
     final isLoggedIn = result.fold((r) => r, (_) => false);
 
     if (isLoggedIn) {

@@ -84,7 +84,7 @@ class _NameField extends StatelessWidget {
       placeholder: Text(
         context.s.registerNamePlaceholder,
         style: theme.textTheme.p.copyWith(
-          color: Colors.white.withOpacity(0.5),
+          color: Colors.white.withValues(alpha: 0.5),
         ),
       ),
       style: theme.textTheme.h3.copyWith(color: Colors.white),
@@ -141,7 +141,7 @@ class _EmailField extends StatelessWidget {
       placeholder: Text(
         context.s.registerEmailPlaceholder,
         style: theme.textTheme.p.copyWith(
-          color: Colors.white.withOpacity(0.5),
+          color: Colors.white.withValues(alpha: 0.5),
         ),
       ),
       style: theme.textTheme.h3.copyWith(color: Colors.white),
@@ -204,7 +204,7 @@ class _PasswordField extends StatelessWidget {
       placeholder: Text(
         context.s.registerPasswordPlaceholder,
         style: theme.textTheme.p.copyWith(
-          color: Colors.white.withOpacity(0.5),
+          color: Colors.white.withValues(alpha: 0.5),
         ),
       ),
       style: theme.textTheme.h3.copyWith(color: Colors.white),

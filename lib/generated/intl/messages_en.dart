@@ -20,10 +20,12 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(maxSizeInMB) =>
+  static String m0(days) => "Last edited ${days} days ago";
+
+  static String m1(maxSizeInMB) =>
       "File size exceeds maximum limit of ${maxSizeInMB} MB";
 
-  static String m1(allowedTypes) =>
+  static String m2(allowedTypes) =>
       "File type not supported. Allowed types: ${allowedTypes}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -50,8 +52,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "common_or": MessageLookupByLibrary.simpleMessage("OR"),
         "common_retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "common_yes": MessageLookupByLibrary.simpleMessage("Yes"),
-        "fileSizeExceedsLimit": m0,
-        "fileTypeNotSupported": m1,
+        "dashboardAIAnalysis":
+            MessageLookupByLibrary.simpleMessage("AI Analysis"),
+        "dashboardCreateCV": MessageLookupByLibrary.simpleMessage("Create CV"),
+        "dashboardJobMatches":
+            MessageLookupByLibrary.simpleMessage("Job Matches"),
+        "dashboardLastEdited": m0,
+        "dashboardMyCVs": MessageLookupByLibrary.simpleMessage("My CVs"),
+        "dashboardQuickActions":
+            MessageLookupByLibrary.simpleMessage("Quick Actions"),
+        "dashboardRecentActivity":
+            MessageLookupByLibrary.simpleMessage("Recent Activity"),
+        "dashboardWelcomeBack":
+            MessageLookupByLibrary.simpleMessage("Welcome back,"),
+        "fileSizeExceedsLimit": m1,
+        "fileTypeNotSupported": m2,
         "loginEmailPlaceholder":
             MessageLookupByLibrary.simpleMessage("Enter your email"),
         "loginEmailRequired":

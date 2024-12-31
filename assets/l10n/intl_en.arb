@@ -135,5 +135,43 @@
   "registerSignInButton": "Sign in",
   "@registerSignInButton": {
     "description": "Text for the sign in link"
+  },
+  "dashboardWelcomeBack": "Welcome back,",
+  "@dashboardWelcomeBack": {
+    "description": "Welcome message on dashboard"
+  },
+  "dashboardQuickActions": "Quick Actions",
+  "@dashboardQuickActions": {
+    "description": "Title for quick actions section"
+  },
+  "dashboardCreateCV": "Create CV",
+  "@dashboardCreateCV": {
+    "description": "Button to create new CV"
+  },
+  "dashboardMyCVs": "My CVs",
+  "@dashboardMyCVs": {
+    "description": "Button to view user's CVs"
+  },
+  "dashboardAIAnalysis": "AI Analysis",
+  "@dashboardAIAnalysis": {
+    "description": "Button to access AI analysis features"
+  },
+  "dashboardJobMatches": "Job Matches",
+  "@dashboardJobMatches": {
+    "description": "Button to view job matches"
+  },
+  "dashboardRecentActivity": "Recent Activity",
+  "@dashboardRecentActivity": {
+    "description": "Title for recent activity section"
+  },
+  "dashboardLastEdited": "Last edited {days} days ago",
+  "@dashboardLastEdited": {
+    "description": "Shows when a CV was last edited",
+    "placeholders": {
+      "days": {
+        "type": "String",
+        "example": "2"
+      }
+    }
   }
 }

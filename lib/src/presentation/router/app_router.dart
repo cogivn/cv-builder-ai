@@ -4,6 +4,8 @@ import 'package:injectable/injectable.dart';
 import '../pages/auth/login_page.dart';
 import '../pages/auth/register_page.dart';
 import '../pages/cv/cv_list_page.dart';
+import '../pages/dashboard/dashboard_page.dart';
+import '../pages/splash/splash_page.dart';
 import 'guards/auth_guard.dart';
 
 part 'app_router.gr.dart';
@@ -17,7 +19,19 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: LoginRoute.page, initial: true),
+        AutoRoute(
+          page: SplashRoute.page,
+          initial: true,
+        ),
+        AutoRoute(page: LoginRoute.page),
         AutoRoute(page: RegisterRoute.page),
+        AutoRoute(
+          page: DashboardRoute.page,
+          guards: [_authGuard],
+        ),
+        AutoRoute(
+          page: CVListRoute.page,
+          guards: [_authGuard],
+        ),
       ];
 }

@@ -17,16 +17,14 @@ import 'package:cv_builder_ai/src/domain/content/repositories/content_repository
     as _i677;
 import 'package:cv_builder_ai/src/domain/cv/repositories/cv_repository.dart'
     as _i185;
-import 'package:cv_builder_ai/src/domain/user/repositories/user_repository.dart'
-    as _i411;
+import 'package:cv_builder_ai/src/infrastructure/auth/repositories/auth_repository_impl.dart'
+    as _i130;
 import 'package:cv_builder_ai/src/infrastructure/auth/repositories/auth_repository_mockup.dart'
     as _i609;
 import 'package:cv_builder_ai/src/infrastructure/content/repositories/content_repository_mockup.dart'
     as _i21;
 import 'package:cv_builder_ai/src/infrastructure/cv/repositories/cv_repository_mockup.dart'
     as _i1043;
-import 'package:cv_builder_ai/src/infrastructure/user/repositories/user_repository_mockup.dart'
-    as _i409;
 import 'package:cv_builder_ai/src/presentation/router/app_router.dart' as _i421;
 import 'package:cv_builder_ai/src/presentation/router/guards/auth_guard.dart'
     as _i1039;
@@ -36,6 +34,7 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:talker/talker.dart' as _i993;
 import 'package:talker_flutter/talker_flutter.dart' as _i207;
 
+const String _test = 'test';
 const String _alpha = 'alpha';
 
 extension GetItInjectableX on _i174.GetIt {
@@ -56,11 +55,15 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i791.AppLifecycle(),
       dispose: (i) => i.dispose(),
     );
-    gh.lazySingleton<_i766.AuthRepository>(() => _i609.AuthRepositoryMockup());
+    gh.lazySingleton<_i766.AuthRepository>(() => _i130.AuthRepositoryImpl());
     gh.singleton<_i677.ContentRepository>(() => _i21.ContentRepositoryMockup());
     gh.factory<String>(
       () => networkModule.baseUrl,
       instanceName: 'baseUrl',
+    );
+    gh.lazySingleton<_i766.AuthRepository>(
+      () => _i609.AuthRepositoryMockup(),
+      registerFor: {_test},
     );
     gh.singleton<_i185.CVRepository>(
       () => _i1043.CVRepositoryMockup(),
@@ -68,10 +71,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i1039.AuthGuard>(
         () => _i1039.AuthGuard(gh<_i766.AuthRepository>()));
-    gh.singleton<_i411.UserRepository>(
-      () => _i409.UserRepositoryMockup(),
-      registerFor: {_alpha},
-    );
     gh.singleton<_i361.Dio>(() => networkModule.dio(
           gh<String>(instanceName: 'baseUrl'),
           gh<_i993.Talker>(),
