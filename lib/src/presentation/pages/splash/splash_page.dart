@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cv_builder_ai/src/core/l10n/messages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
+import '../../../core/utils/logger.dart';
 import '../../router/app_router.dart';
 import 'controllers/splash_controller.dart';
 
@@ -32,7 +34,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
         unauthenticated: () => context.router.replace(LoginRoute()),
         error: (message) {
           // TODO: Show error message using your preferred method
-          debugPrint('Splash error: $message');
+          logger.e('Splash error: $message');
           context.router.replace(LoginRoute());
         },
       );
@@ -52,7 +54,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             ),
             const SizedBox(height: 24),
             Text(
-              'CV Builder AI',
+              context.s.appTitle,
               style: theme.textTheme.h2.copyWith(
                 color: colorScheme.foreground,
               ),

@@ -529,6 +529,16 @@ class S {
       args: [days],
     );
   }
+
+  /// `CV Builder AI`
+  String get appTitle {
+    return Intl.message(
+      'CV Builder AI',
+      name: 'appTitle',
+      desc: 'The title of the application',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

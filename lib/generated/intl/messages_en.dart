@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Internal server error"),
         "apiErrorUnauthorized":
             MessageLookupByLibrary.simpleMessage("Unauthorized access"),
+        "appTitle": MessageLookupByLibrary.simpleMessage("CV Builder AI"),
         "common_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "common_confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "common_next": MessageLookupByLibrary.simpleMessage("Next"),
