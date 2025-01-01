@@ -177,5 +177,28 @@
   "appTitle": "CV Builder AI",
   "@appTitle": {
     "description": "The title of the application"
+  },
+  "@accountBottomSheet": {
+    "description": "Account bottom sheet translations"
+  },
+  "accountManageAccount": "Manage your Account",
+  "@accountManageAccount": {
+    "description": "Manage account option in account bottom sheet"
+  },
+  "accountSettings": "Settings",
+  "@accountSettings": {
+    "description": "Settings option in account bottom sheet"
+  },
+  "accountHelpAndFeedback": "Help & feedback",
+  "@accountHelpAndFeedback": {
+    "description": "Help and feedback option in account bottom sheet"
+  },
+  "accountPrivacyPolicy": "Privacy Policy",
+  "@accountPrivacyPolicy": {
+    "description": "Privacy policy option in account bottom sheet"
+  },
+  "accountTermsOfService": "Terms of Service",
+  "@accountTermsOfService": {
+    "description": "Terms of service option in account bottom sheet"
   }
 }

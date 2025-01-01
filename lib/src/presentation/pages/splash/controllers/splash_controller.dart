@@ -14,7 +14,7 @@ class SplashController extends _$SplashController {
   }
 
   Future<void> setHasSeenOnboarding() async {
-    // await Storage.setHasSeenOnboarding(true);
+    await Storage.setHasSeenOnboarding(true);
   }
 
   void checkAuthStatus() {

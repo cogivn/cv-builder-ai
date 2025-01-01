@@ -61,7 +61,7 @@ class OnboardingContent extends StatelessWidget {
                       item.description,
                       textAlign: TextAlign.center,
                       style: theme.textTheme.large.copyWith(
-                        color: theme.colorScheme.foreground.withOpacity(0.7),
+                        color: theme.colorScheme.foreground.withValues(alpha: 0.7),
                         height: 1.5,
                         letterSpacing: -0.2,
                       ),

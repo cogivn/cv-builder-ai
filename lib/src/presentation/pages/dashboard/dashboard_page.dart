@@ -1,11 +1,43 @@
-import 'package:auto_route/annotations.dart';
-import 'package:cv_builder_ai/src/core/l10n/messages.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+
+import '../../../core/l10n/messages.dart';
+import '../../widgets/account_bottom_sheet.dart';
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
+
+  void _showAccountBottomSheet(BuildContext context) {
+    final theme = ShadTheme.of(context);
+    showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      backgroundColor: theme.colorScheme.background,
+      isScrollControlled: true,
+      builder: (context) => AccountBottomSheet(
+        name: 'John Doe', // Replace with actual user name
+        email: 'john.doe@example.com', // Replace with actual email
+        avatarUrl: 'https://i.pravatar.cc/300', // Replace with actual avatar
+        onManageAccount: () {
+          Navigator.pop(context);
+        },
+        onBackupSettings: () {
+          Navigator.pop(context);
+        },
+        onManageStorage: () {
+          Navigator.pop(context);
+        },
+        onSettings: () {
+          Navigator.pop(context);
+        },
+        onHelp: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +46,11 @@ class DashboardPage extends StatelessWidget {
     final messages = context.s;
 
     return Scaffold(
+      backgroundColor: colorScheme.background,
       appBar: AppBar(
+        backgroundColor: colorScheme.background,
         elevation: 0,
-        toolbarHeight: 64,
         centerTitle: false,
-        leadingWidth: 0,
         titleSpacing: 24,
         title: Row(
           children: [
@@ -33,45 +65,19 @@ class DashboardPage extends StatelessWidget {
           ],
         ),
         actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 24),
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: colorScheme.border,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircleAvatar(
-                  radius: 14,
-                  backgroundColor: colorScheme.muted,
-                  child: Icon(
-                    Icons.person_outline,
-                    color: colorScheme.mutedForeground,
-                    size: 16,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  'John Doe',
-                  style: theme.textTheme.p.copyWith(
-                    color: colorScheme.foreground,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(width: 4),
-                Icon(
-                  Icons.expand_more,
+          GestureDetector(
+            onTap: () => _showAccountBottomSheet(context),
+            child: Container(
+              margin: const EdgeInsets.only(right: 16),
+              child: CircleAvatar(
+                radius: 16,
+                backgroundColor: colorScheme.muted,
+                child: Icon(
+                  Icons.person_outline,
                   color: colorScheme.mutedForeground,
-                  size: 18,
+                  size: 16,
                 ),
-                const SizedBox(width: 2),
-              ],
+              ),
             ),
           ),
         ],

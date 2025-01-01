@@ -30,6 +30,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accountHelpAndFeedback":
+            MessageLookupByLibrary.simpleMessage("Help & feedback"),
+        "accountManageAccount":
+            MessageLookupByLibrary.simpleMessage("Manage your Account"),
+        "accountPrivacyPolicy":
+            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+        "accountSettings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "accountTermsOfService":
+            MessageLookupByLibrary.simpleMessage("Terms of Service"),
         "apiErrorBadRequest":
             MessageLookupByLibrary.simpleMessage("Bad request"),
         "apiErrorCancelled":
