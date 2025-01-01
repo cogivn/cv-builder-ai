@@ -17,9 +17,9 @@ class DashboardPage extends StatelessWidget {
       backgroundColor: theme.colorScheme.background,
       isScrollControlled: true,
       builder: (context) => AccountBottomSheet(
-        name: 'John Doe', // Replace with actual user name
-        email: 'john.doe@example.com', // Replace with actual email
-        avatarUrl: 'https://i.pravatar.cc/300', // Replace with actual avatar
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        avatarUrl: 'https://i.pravatar.cc/300',
         onManageAccount: () {
           Navigator.pop(context);
         },
@@ -50,327 +50,412 @@ class DashboardPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: colorScheme.background,
         elevation: 0,
-        centerTitle: false,
-        titleSpacing: 24,
-        title: Row(
-          children: [
-            Text(
-              'CV.AI',
-              style: theme.textTheme.h3.copyWith(
-                color: colorScheme.foreground,
-                fontWeight: FontWeight.w600,
-                fontSize: 20,
-              ),
+        centerTitle: true,
+        title: Text(
+          'Resumo',
+          style: theme.textTheme.h4.copyWith(
+            color: colorScheme.foreground,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        leading: IconButton(
+          icon: CircleAvatar(
+            backgroundColor: colorScheme.muted,
+            child: Icon(
+              Icons.person_outline,
+              color: colorScheme.mutedForeground,
+              size: 16,
             ),
-          ],
+          ),
+          onPressed: () => _showAccountBottomSheet(context),
         ),
         actions: [
-          GestureDetector(
-            onTap: () => _showAccountBottomSheet(context),
-            child: Container(
-              margin: const EdgeInsets.only(right: 16),
-              child: CircleAvatar(
-                radius: 16,
-                backgroundColor: colorScheme.muted,
-                child: Icon(
-                  Icons.person_outline,
-                  color: colorScheme.mutedForeground,
-                  size: 16,
-                ),
-              ),
+          IconButton(
+            icon: Icon(
+              Icons.notifications_outlined,
+              color: colorScheme.foreground,
             ),
+            onPressed: () {},
           ),
         ],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            _buildSignInCard(context),
+            const SizedBox(height: 24),
+            _buildActionButtons(context),
+            const SizedBox(height: 32),
+            _buildResumesSection(context),
+          ],
+        ),
+      ),
+      bottomNavigationBar: _buildBottomNavigationBar(context),
+    );
+  }
+
+  Widget _buildSignInCard(BuildContext context) {
+    final theme = ShadTheme.of(context);
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.primary,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Sign in to your free account',
+            style: theme.textTheme.h4.copyWith(
+              color: theme.colorScheme.primaryForeground,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Your guest account will be deleted when the time is up. Sign in to save and download your resume',
+            style: theme.textTheme.small.copyWith(
+              color: theme.colorScheme.primaryForeground.withValues(alpha: 0.8),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
             children: [
-              Text(
-                messages.dashboardQuickActions,
-                style: theme.textTheme.p.copyWith(
-                  color: colorScheme.mutedForeground,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
+              Expanded(
+                child: ShadButton.ghost(
+                  backgroundColor: theme.colorScheme.primaryForeground,
+                  foregroundColor: theme.colorScheme.primary,
+                  onPressed: () {},
+                  child: const Text('Sign In Now'),
                 ),
               ),
-              const SizedBox(height: 16),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final isMobile = constraints.maxWidth <= 600;
-                  final crossAxisCount = constraints.maxWidth > 900 ? 4 
-                    : constraints.maxWidth > 600 ? 2 
-                    : 2;
-                  final childAspectRatio = isMobile ? 1.0 : 1.1;
-                  
-                  return GridView.count(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    crossAxisCount: crossAxisCount,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
-                    childAspectRatio: childAspectRatio,
-                    children: [
-                      _QuickActionCard(
-                        title: messages.dashboardCreateCV,
-                        icon: Icons.add_circle_outline,
-                        onTap: () {
-                          // TODO: Navigate to CV creation page
-                        },
-                        theme: theme,
-                      ),
-                      _QuickActionCard(
-                        title: messages.dashboardMyCVs,
-                        icon: Icons.description_outlined,
-                        onTap: () {
-                          // TODO: Navigate to CV list page
-                        },
-                        theme: theme,
-                      ),
-                      _QuickActionCard(
-                        title: messages.dashboardAIAnalysis,
-                        icon: Icons.analytics_outlined,
-                        onTap: () {
-                          // TODO: Navigate to CV analysis page
-                        },
-                        theme: theme,
-                      ),
-                      _QuickActionCard(
-                        title: messages.dashboardJobMatches,
-                        icon: Icons.work_outline,
-                        onTap: () {
-                          // TODO: Navigate to job matches page
-                        },
-                        theme: theme,
-                      ),
-                    ],
-                  );
-                },
-              ),
-              const SizedBox(height: 32),
-              Text(
-                messages.dashboardRecentActivity,
-                style: theme.textTheme.p.copyWith(
-                  color: colorScheme.mutedForeground,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
+              const SizedBox(width: 16),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primaryForeground.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  '67:12:45',
+                  style: theme.textTheme.small.copyWith(
+                    color: theme.colorScheme.primaryForeground,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-              const SizedBox(height: 16),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 3,
-                separatorBuilder: (context, index) => const SizedBox(height: 12),
-                itemBuilder: (context, index) {
-                  return _ActivityCard(
-                    title: 'Software Engineer CV',
-                    subtitle: messages.dashboardLastEdited('2'),
-                    icon: Icons.description_outlined,
-                    onTap: () {
-                      // TODO: Navigate to specific CV
-                    },
-                    theme: theme,
-                  );
-                },
-              ),
-              const SizedBox(height: 16),
             ],
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionButtons(BuildContext context) {
+    final theme = ShadTheme.of(context);
+    return Row(
+      children: [
+        Expanded(
+          child: _ActionButton(
+            icon: Icons.description_outlined,
+            label: 'New resume',
+            onTap: () {},
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: _ActionButton(
+            icon: Icons.mail_outline,
+            label: 'Cover letter',
+            onTap: () {},
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildResumesSection(BuildContext context) {
+    final theme = ShadTheme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'My Resumes',
+          style: theme.textTheme.h4.copyWith(
+            color: theme.colorScheme.foreground,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 24),
+        _ResumeItem(
+          title: 'UI / UX Designer',
+          subtitle: 'Modern',
+          date: '12 May 2023',
+          progress: 0.85,
+          onTap: () {},
+        ),
+        const SizedBox(height: 24),
+        _ResumeItem(
+          title: 'Graphic Designer',
+          subtitle: 'Professional',
+          date: '14 May 2023',
+          progress: 0.55,
+          onTap: () {},
+        ),
+        const SizedBox(height: 24),
+        _ResumeItem(
+          title: 'Product Designer',
+          subtitle: 'Simple',
+          date: '11 May 2023',
+          progress: 0.25,
+          onTap: () {},
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBottomNavigationBar(BuildContext context) {
+    final theme = ShadTheme.of(context);
+    return Container(
+      decoration: BoxDecoration(
+        color: theme.colorScheme.background,
+        border: Border(
+          top: BorderSide(
+            color: theme.colorScheme.border,
+            width: 1,
+          ),
+        ),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _NavBarItem(
+              icon: Icons.home,
+              label: 'Home',
+              isSelected: true,
+              onTap: () {},
+            ),
+            _NavBarItem(
+              icon: Icons.grid_view,
+              label: 'Template',
+              onTap: () {},
+            ),
+            _NavBarItem(
+              icon: Icons.favorite_border,
+              label: 'Favorite',
+              onTap: () {},
+            ),
+            _NavBarItem(
+              icon: Icons.settings_outlined,
+              label: 'Settings',
+              onTap: () {},
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-class _QuickActionCard extends StatefulWidget {
-  final String title;
+class _ActionButton extends StatelessWidget {
   final IconData icon;
+  final String label;
   final VoidCallback onTap;
-  final ShadThemeData theme;
 
-  const _QuickActionCard({
-    required this.title,
+  const _ActionButton({
     required this.icon,
+    required this.label,
     required this.onTap,
-    required this.theme,
   });
 
   @override
-  State<_QuickActionCard> createState() => _QuickActionCardState();
-}
-
-class _QuickActionCardState extends State<_QuickActionCard> {
-  bool isHovered = false;
-
-  @override
   Widget build(BuildContext context) {
-    final colorScheme = widget.theme.colorScheme;
-    final isMobile = MediaQuery.of(context).size.width <= 600;
-
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => isHovered = true),
-      onExit: (_) => setState(() => isHovered = false),
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: Container(
-          decoration: BoxDecoration(
-            color: isHovered ? colorScheme.muted : colorScheme.background,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: colorScheme.border,
-              width: 1,
+    final theme = ShadTheme.of(context);
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.muted,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: theme.colorScheme.mutedForeground,
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorScheme.background,
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      color: colorScheme.border,
-                      width: 1,
-                    ),
-                  ),
-                  child: Icon(
-                    widget.icon,
-                    color: colorScheme.foreground,
-                    size: 24,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        widget.title,
-                        style: widget.theme.textTheme.p.copyWith(
-                          color: colorScheme.foreground,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13,
-                        ),
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      color: colorScheme.mutedForeground,
-                      size: 18,
-                    ),
-                  ],
-                ),
-              ],
+            const SizedBox(width: 12),
+            Text(
+              label,
+              style: theme.textTheme.small.copyWith(
+                color: theme.colorScheme.foreground,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 }
 
-class _ActivityCard extends StatefulWidget {
+class _ResumeItem extends StatelessWidget {
   final String title;
   final String subtitle;
-  final IconData icon;
+  final String date;
+  final double progress;
   final VoidCallback onTap;
-  final ShadThemeData theme;
 
-  const _ActivityCard({
+  const _ResumeItem({
     required this.title,
     required this.subtitle,
-    required this.icon,
+    required this.date,
+    required this.progress,
     required this.onTap,
-    required this.theme,
   });
 
   @override
-  State<_ActivityCard> createState() => _ActivityCardState();
+  Widget build(BuildContext context) {
+    final theme = ShadTheme.of(context);
+    return ShadCard(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.muted,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(
+                  Icons.description_outlined,
+                  color: theme.colorScheme.mutedForeground,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    title,
+                    style: theme.textTheme.large.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 4),
+                  DefaultTextStyle(
+                    style: theme.textTheme.small.copyWith(
+                      color: theme.colorScheme.mutedForeground,
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          subtitle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(width: 8),
+                        Container(
+                          width: 4,
+                          height: 4,
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.mutedForeground,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(date),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: 40,
+                height: 4,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(2),
+                  child: LinearProgressIndicator(
+                    value: progress,
+                    backgroundColor: theme.colorScheme.border,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      theme.colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                '${(progress * 100).toInt()}%',
+                style: theme.textTheme.small.copyWith(
+                  color: theme.colorScheme.primary,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
 
-class _ActivityCardState extends State<_ActivityCard> {
-  bool isHovered = false;
+class _NavBarItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _NavBarItem({
+    required this.icon,
+    required this.label,
+    this.isSelected = false,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = widget.theme.colorScheme;
-    final isMobile = MediaQuery.of(context).size.width <= 600;
+    final theme = ShadTheme.of(context);
+    final color = isSelected ? theme.colorScheme.primary : theme.colorScheme.mutedForeground;
 
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => isHovered = true),
-      onExit: (_) => setState(() => isHovered = false),
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: Container(
-          decoration: BoxDecoration(
-            color: isHovered ? colorScheme.muted : colorScheme.background,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: colorScheme.border,
-              width: 1,
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: color,
+              size: 24,
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: colorScheme.background,
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      color: colorScheme.border,
-                      width: 1,
-                    ),
-                  ),
-                  child: Icon(
-                    widget.icon,
-                    color: colorScheme.foreground,
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        widget.title,
-                        style: widget.theme.textTheme.p.copyWith(
-                          color: colorScheme.foreground,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        widget.subtitle,
-                        style: widget.theme.textTheme.p.copyWith(
-                          color: colorScheme.mutedForeground,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right,
-                  color: colorScheme.mutedForeground,
-                  size: 18,
-                ),
-              ],
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: theme.textTheme.small.copyWith(
+                color: color,
+                fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
