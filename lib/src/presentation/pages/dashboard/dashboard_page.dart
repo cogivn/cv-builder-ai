@@ -14,119 +14,153 @@ class DashboardPage extends StatelessWidget {
     final messages = context.s;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      appBar: AppBar(
+        elevation: 0,
+        toolbarHeight: 64,
+        centerTitle: false,
+        leadingWidth: 0,
+        titleSpacing: 24,
+        title: Row(
+          children: [
+            Text(
+              'CV.AI',
+              style: theme.textTheme.h3.copyWith(
+                color: colorScheme.foreground,
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: colorScheme.border,
+                width: 1,
+              ),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  radius: 14,
+                  backgroundColor: colorScheme.muted,
+                  child: Icon(
+                    Icons.person_outline,
+                    color: colorScheme.mutedForeground,
+                    size: 16,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'John Doe',
+                  style: theme.textTheme.p.copyWith(
+                    color: colorScheme.foreground,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                Icon(
+                  Icons.expand_more,
+                  color: colorScheme.mutedForeground,
+                  size: 18,
+                ),
+                const SizedBox(width: 2),
+              ],
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header with user info and quick actions
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        messages.dashboardWelcomeBack,
-                        style: theme.textTheme.h2.copyWith(
-                          color: colorScheme.foreground,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'John Doe', // TODO: Replace with actual user name
-                        style: theme.textTheme.h4.copyWith(
-                          color: colorScheme.foreground.withValues(alpha: 0.7),
-                        ),
-                      ),
-                    ],
-                  ),
-                  ShadButton(
-                    onPressed: () {
-                      // TODO: Navigate to profile settings
-                    },
-                    backgroundColor: Colors.transparent,
-                    hoverBackgroundColor: colorScheme.primary.withOpacity(0.1),
-                    child: Icon(
-                      Icons.account_circle_outlined,
-                      color: colorScheme.foreground,
-                      size: 32,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 32),
-
-              // Quick Actions Grid
               Text(
                 messages.dashboardQuickActions,
-                style: theme.textTheme.h3.copyWith(
-                  color: colorScheme.foreground,
+                style: theme.textTheme.p.copyWith(
+                  color: colorScheme.mutedForeground,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
                 ),
               ),
               const SizedBox(height: 16),
-              GridView.count(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 1.5,
-                children: [
-                  _QuickActionCard(
-                    title: messages.dashboardCreateCV,
-                    icon: Icons.add_circle_outline,
-                    onTap: () {
-                      // TODO: Navigate to CV creation page
-                    },
-                    theme: theme,
-                  ),
-                  _QuickActionCard(
-                    title: messages.dashboardMyCVs,
-                    icon: Icons.description_outlined,
-                    onTap: () {
-                      // TODO: Navigate to CV list page
-                    },
-                    theme: theme,
-                  ),
-                  _QuickActionCard(
-                    title: messages.dashboardAIAnalysis,
-                    icon: Icons.analytics_outlined,
-                    onTap: () {
-                      // TODO: Navigate to CV analysis page
-                    },
-                    theme: theme,
-                  ),
-                  _QuickActionCard(
-                    title: messages.dashboardJobMatches,
-                    icon: Icons.work_outline,
-                    onTap: () {
-                      // TODO: Navigate to job matches page
-                    },
-                    theme: theme,
-                  ),
-                ],
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final isMobile = constraints.maxWidth <= 600;
+                  final crossAxisCount = constraints.maxWidth > 900 ? 4 
+                    : constraints.maxWidth > 600 ? 2 
+                    : 2;
+                  final childAspectRatio = isMobile ? 1.0 : 1.1;
+                  
+                  return GridView.count(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: crossAxisCount,
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
+                    childAspectRatio: childAspectRatio,
+                    children: [
+                      _QuickActionCard(
+                        title: messages.dashboardCreateCV,
+                        icon: Icons.add_circle_outline,
+                        onTap: () {
+                          // TODO: Navigate to CV creation page
+                        },
+                        theme: theme,
+                      ),
+                      _QuickActionCard(
+                        title: messages.dashboardMyCVs,
+                        icon: Icons.description_outlined,
+                        onTap: () {
+                          // TODO: Navigate to CV list page
+                        },
+                        theme: theme,
+                      ),
+                      _QuickActionCard(
+                        title: messages.dashboardAIAnalysis,
+                        icon: Icons.analytics_outlined,
+                        onTap: () {
+                          // TODO: Navigate to CV analysis page
+                        },
+                        theme: theme,
+                      ),
+                      _QuickActionCard(
+                        title: messages.dashboardJobMatches,
+                        icon: Icons.work_outline,
+                        onTap: () {
+                          // TODO: Navigate to job matches page
+                        },
+                        theme: theme,
+                      ),
+                    ],
+                  );
+                },
               ),
               const SizedBox(height: 32),
-
-              // Recent Activity Section
               Text(
                 messages.dashboardRecentActivity,
-                style: theme.textTheme.h3.copyWith(
-                  color: colorScheme.foreground,
+                style: theme.textTheme.p.copyWith(
+                  color: colorScheme.mutedForeground,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
                 ),
               ),
               const SizedBox(height: 16),
               ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 3, // Show last 3 activities
+                itemCount: 3,
                 separatorBuilder: (context, index) => const SizedBox(height: 12),
                 itemBuilder: (context, index) {
                   return _ActivityCard(
-                    title: 'Software Engineer CV', // TODO: Replace with actual CV title
+                    title: 'Software Engineer CV',
                     subtitle: messages.dashboardLastEdited('2'),
                     icon: Icons.description_outlined,
                     onTap: () {
@@ -136,6 +170,7 @@ class DashboardPage extends StatelessWidget {
                   );
                 },
               ),
+              const SizedBox(height: 16),
             ],
           ),
         ),
@@ -167,6 +202,7 @@ class _QuickActionCardState extends State<_QuickActionCard> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = widget.theme.colorScheme;
+    final isMobile = MediaQuery.of(context).size.width <= 600;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -174,32 +210,57 @@ class _QuickActionCardState extends State<_QuickActionCard> {
       onExit: (_) => setState(() => isHovered = false),
       child: GestureDetector(
         onTap: widget.onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeInOut,
-          child: ShadCard(
-            backgroundColor: isHovered 
-              ? colorScheme.primary.withOpacity(0.1)
-              : colorScheme.card,
+        child: Container(
+          decoration: BoxDecoration(
+            color: isHovered ? colorScheme.muted : colorScheme.background,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: colorScheme.border,
+              width: 1,
+            ),
+          ),
+          child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AnimatedScale(
-                  duration: const Duration(milliseconds: 200),
-                  scale: isHovered ? 1.1 : 1.0,
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: colorScheme.background,
+                    borderRadius: BorderRadius.circular(6),
+                    border: Border.all(
+                      color: colorScheme.border,
+                      width: 1,
+                    ),
+                  ),
                   child: Icon(
                     widget.icon,
-                    size: 32,
-                    color: colorScheme.primary,
+                    color: colorScheme.foreground,
+                    size: 24,
                   ),
                 ),
-                const SizedBox(height: 12),
-                Text(
-                  widget.title,
-                  style: widget.theme.textTheme.h4.copyWith(
-                    color: colorScheme.foreground,
-                  ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        widget.title,
+                        style: widget.theme.textTheme.p.copyWith(
+                          color: colorScheme.foreground,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_forward,
+                      color: colorScheme.mutedForeground,
+                      size: 18,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -235,6 +296,7 @@ class _ActivityCardState extends State<_ActivityCard> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = widget.theme.colorScheme;
+    final isMobile = MediaQuery.of(context).size.width <= 600;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -242,54 +304,63 @@ class _ActivityCardState extends State<_ActivityCard> {
       onExit: (_) => setState(() => isHovered = false),
       child: GestureDetector(
         onTap: widget.onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeInOut,
-          child: ShadCard(
-            backgroundColor: isHovered 
-              ? colorScheme.primary.withOpacity(0.1)
-              : colorScheme.card,
+        child: Container(
+          decoration: BoxDecoration(
+            color: isHovered ? colorScheme.muted : colorScheme.background,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: colorScheme.border,
+              width: 1,
+            ),
+          ),
+          child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                AnimatedScale(
-                  duration: const Duration(milliseconds: 200),
-                  scale: isHovered ? 1.1 : 1.0,
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: colorScheme.background,
+                    borderRadius: BorderRadius.circular(6),
+                    border: Border.all(
+                      color: colorScheme.border,
+                      width: 1,
+                    ),
+                  ),
                   child: Icon(
                     widget.icon,
-                    size: 24,
-                    color: colorScheme.primary,
+                    color: colorScheme.foreground,
+                    size: 20,
                   ),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         widget.title,
-                        style: widget.theme.textTheme.h4.copyWith(
+                        style: widget.theme.textTheme.p.copyWith(
                           color: colorScheme.foreground,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         widget.subtitle,
-                        style: widget.theme.textTheme.small.copyWith(
-                          color: colorScheme.foreground.withValues(alpha: 0.7),
+                        style: widget.theme.textTheme.p.copyWith(
+                          color: colorScheme.mutedForeground,
                         ),
                       ),
                     ],
                   ),
                 ),
-                AnimatedSlide(
-                  duration: const Duration(milliseconds: 200),
-                  offset: isHovered ? const Offset(0.2, 0) : Offset.zero,
-                  child: Icon(
-                    Icons.chevron_right,
-                    size: 24,
-                    color: colorScheme.foreground.withValues(alpha: 0.5),
-                  ),
+                Icon(
+                  Icons.chevron_right,
+                  color: colorScheme.mutedForeground,
+                  size: 18,
                 ),
               ],
             ),

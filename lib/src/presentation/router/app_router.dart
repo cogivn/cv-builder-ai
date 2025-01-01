@@ -5,6 +5,7 @@ import '../pages/auth/login_page.dart';
 import '../pages/auth/register_page.dart';
 import '../pages/cv/cv_list_page.dart';
 import '../pages/dashboard/dashboard_page.dart';
+import '../pages/onboarding/onboarding_page.dart';
 import '../pages/splash/splash_page.dart';
 import 'guards/auth_guard.dart';
 
@@ -22,6 +23,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           page: SplashRoute.page,
           initial: true,
+        ),
+        AutoRoute(
+          page: OnboardingRoute.page,
         ),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: RegisterRoute.page),

@@ -10,6 +10,7 @@ class _Keys {
   static const deviceId = 'device_id';
   static const pushToken = 'push_token';
   static const isPushEnabled = 'is_push_enabled';
+  static const hasSeenOnboarding = 'has_seen_onboarding';
 }
 
 class Storage {
@@ -88,5 +89,13 @@ class Storage {
   static Future setPushToken(String? val) {
     if (val == null) return Future.value('');
     return _set<String>(_Keys.pushToken, val);
+  }
+
+  static Future<bool> getHasSeenOnboarding() async {
+    return _get<bool>(_Keys.hasSeenOnboarding) ?? false;
+  }
+
+  static Future<void> setHasSeenOnboarding(bool value) async {
+    return _set<bool>(_Keys.hasSeenOnboarding, value);
   }
 }

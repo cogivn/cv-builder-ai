@@ -230,6 +230,7 @@ class _SubmitButton extends StatelessWidget {
               child: CircularProgressIndicator(
                 strokeWidth: 2,
                 color: Colors.white,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
             )
           : Text(

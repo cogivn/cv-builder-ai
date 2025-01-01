@@ -50,7 +50,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     ref.listen(authControllerProvider, (previous, next) {
       next.whenOrNull(
-        authenticated: (token) => widget.onLoginResult?.call(true),
+        authenticated: (token) {
+          widget.onLoginResult?.call(true);
+          context.router.replace(const DashboardRoute());
+        },
         error: (message) => ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(message)),
         ),
