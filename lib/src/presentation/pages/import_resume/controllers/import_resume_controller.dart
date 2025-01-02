@@ -79,6 +79,31 @@ class ImportResumeController extends _$ImportResumeController {
       );
     }
   }
+
+  Future<void> selectInternalResume(String resumeId) async {
+    state = state.copyWith(
+      selectedInternalResumeId: resumeId,
+      importState: ImportState.analyzing,
+    );
+
+    try {
+      // Simulate analysis of internal resume
+      await Future.delayed(const Duration(seconds: 3));
+      
+      state = state.copyWith(
+        importState: ImportState.done,
+        skills: ['Flutter', 'Dart', 'UI/UX', 'Mobile Development'],
+        experience: ['Senior Mobile Developer', 'UI Designer'],
+        education: ['Bachelor of Computer Science'],
+      );
+    } catch (e) {
+      state = state.copyWith(
+        importState: ImportState.initial,
+        error: e.toString(),
+        selectedInternalResumeId: null,
+      );
+    }
+  }
 }
 
 @freezed
@@ -91,5 +116,6 @@ class ImportResumeState with _$ImportResumeState {
     @Default([]) List<String> skills,
     @Default([]) List<String> experience,
     @Default([]) List<String> education,
+    String? selectedInternalResumeId,
   }) = _ImportResumeState;
 }

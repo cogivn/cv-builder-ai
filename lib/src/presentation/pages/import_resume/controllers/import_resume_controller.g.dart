@@ -7,7 +7,7 @@ part of 'import_resume_controller.dart';
 // **************************************************************************
 
 String _$importResumeControllerHash() =>
-    r'7b73e0d232a4bf3b8b10ec4e6accfa8a121fd31f';
+    r'c3617eddf8a80d38121d7d32cd5cb85924aeff2c';
 
 /// See also [ImportResumeController].
 @ProviderFor(ImportResumeController)

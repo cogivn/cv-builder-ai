@@ -298,5 +298,57 @@
     "placeholders": {
       "progress": {}
     }
+  },
+  "uploadResumeOrText": "OR",
+  "@uploadResumeOrText": {
+    "description": "Text shown between upload and select options"
+  },
+  "uploadResumeSelectExisting": "Select from Your Resumes",
+  "@uploadResumeSelectExisting": {
+    "description": "Button text to select from existing resumes"
+  },
+  "resumePickerTitle": "Select Resume",
+  "@resumePickerTitle": {
+    "description": "Title for the resume picker dialog"
+  },
+  "resumePickerSubtitle": "Choose a resume to analyze",
+  "@resumePickerSubtitle": {
+    "description": "Subtitle for the resume picker dialog"
+  },
+  "resumePickerModifiedToday": "Today",
+  "@resumePickerModifiedToday": {
+    "description": "Text shown when resume was modified today"
+  },
+  "resumePickerModifiedYesterday": "Yesterday",
+  "@resumePickerModifiedYesterday": {
+    "description": "Text shown when resume was modified yesterday"
+  },
+  "resumePickerModifiedDaysAgo": "{days} days ago",
+  "@resumePickerModifiedDaysAgo": {
+    "description": "Text shown when resume was modified X days ago",
+    "placeholders": {
+      "days": {}
+    }
+  },
+  "resumePickerModifiedDate": "{day}/{month}/{year}",
+  "@resumePickerModifiedDate": {
+    "description": "Text showing the modification date of a resume",
+    "placeholders": {
+      "day": {},
+      "month": {},
+      "year": {}
+    }
+  },
+  "uploadResumeAnalyzeButton": "Upload Resume",
+  "@uploadResumeAnalyzeButton": {
+    "description": "Button text for analyzing a resume"
+  },
+  "uploadResumePageTitleAnalyze": "Analyze Your Resume",
+  "@uploadResumePageTitleAnalyze": {
+    "description": "Page title when analyzing a resume"
+  },
+  "uploadResumePageTitleUpload": "Upload Your Resume",
+  "@uploadResumePageTitleUpload": {
+    "description": "Page title when uploading a resume"
   }
 }

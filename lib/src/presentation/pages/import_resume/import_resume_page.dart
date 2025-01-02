@@ -16,6 +16,8 @@ part 'components/upload_content_view.dart';
 
 part 'components/upload_progress_view.dart';
 
+part 'components/resume_picker_dialog.dart';
+
 @RoutePage()
 class ImportResumePage extends ConsumerStatefulWidget {
   const ImportResumePage({super.key});
@@ -101,21 +103,21 @@ class _ImportResumePageState extends ConsumerState<ImportResumePage>
         onUploadFile: controller.uploadFile,
         onClearFile: controller.clearFile,
         state: state.importState,
+        onSelectInternalResume: () {
+          showDialog(
+            context: context,
+            builder: (context) => ResumePickerDialog(
+              theme: theme,
+              onSelect: controller.selectInternalResume,
+            ),
+          );
+        },
       );
     }
 
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
-      appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          'Import Resume',
-          style: theme.textTheme.h4.copyWith(
-            color: theme.colorScheme.foreground,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      appBar: AppBar(elevation: 0),
       body: Center(
         child: Container(
           constraints: const BoxConstraints(maxWidth: 480),

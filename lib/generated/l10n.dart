@@ -819,6 +819,116 @@ class S {
       args: [progress],
     );
   }
+
+  /// `OR`
+  String get uploadResumeOrText {
+    return Intl.message(
+      'OR',
+      name: 'uploadResumeOrText',
+      desc: 'Text shown between upload and select options',
+      args: [],
+    );
+  }
+
+  /// `Select from Your Resumes`
+  String get uploadResumeSelectExisting {
+    return Intl.message(
+      'Select from Your Resumes',
+      name: 'uploadResumeSelectExisting',
+      desc: 'Button text to select from existing resumes',
+      args: [],
+    );
+  }
+
+  /// `Select Resume`
+  String get resumePickerTitle {
+    return Intl.message(
+      'Select Resume',
+      name: 'resumePickerTitle',
+      desc: 'Title for the resume picker dialog',
+      args: [],
+    );
+  }
+
+  /// `Choose a resume to analyze`
+  String get resumePickerSubtitle {
+    return Intl.message(
+      'Choose a resume to analyze',
+      name: 'resumePickerSubtitle',
+      desc: 'Subtitle for the resume picker dialog',
+      args: [],
+    );
+  }
+
+  /// `Today`
+  String get resumePickerModifiedToday {
+    return Intl.message(
+      'Today',
+      name: 'resumePickerModifiedToday',
+      desc: 'Text shown when resume was modified today',
+      args: [],
+    );
+  }
+
+  /// `Yesterday`
+  String get resumePickerModifiedYesterday {
+    return Intl.message(
+      'Yesterday',
+      name: 'resumePickerModifiedYesterday',
+      desc: 'Text shown when resume was modified yesterday',
+      args: [],
+    );
+  }
+
+  /// `{days} days ago`
+  String resumePickerModifiedDaysAgo(Object days) {
+    return Intl.message(
+      '$days days ago',
+      name: 'resumePickerModifiedDaysAgo',
+      desc: 'Text shown when resume was modified X days ago',
+      args: [days],
+    );
+  }
+
+  /// `{day}/{month}/{year}`
+  String resumePickerModifiedDate(Object day, Object month, Object year) {
+    return Intl.message(
+      '$day/$month/$year',
+      name: 'resumePickerModifiedDate',
+      desc: 'Text showing the modification date of a resume',
+      args: [day, month, year],
+    );
+  }
+
+  /// `Upload Resume`
+  String get uploadResumeAnalyzeButton {
+    return Intl.message(
+      'Upload Resume',
+      name: 'uploadResumeAnalyzeButton',
+      desc: 'Button text for analyzing a resume',
+      args: [],
+    );
+  }
+
+  /// `Analyze Your Resume`
+  String get uploadResumePageTitleAnalyze {
+    return Intl.message(
+      'Analyze Your Resume',
+      name: 'uploadResumePageTitleAnalyze',
+      desc: 'Page title when analyzing a resume',
+      args: [],
+    );
+  }
+
+  /// `Upload Your Resume`
+  String get uploadResumePageTitleUpload {
+    return Intl.message(
+      'Upload Your Resume',
+      name: 'uploadResumePageTitleUpload',
+      desc: 'Page title when uploading a resume',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

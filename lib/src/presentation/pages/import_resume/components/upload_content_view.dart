@@ -9,6 +9,7 @@ class UploadContentView extends StatelessWidget {
     required this.onUploadFile,
     required this.onClearFile,
     required this.state,
+    required this.onSelectInternalResume,
   });
 
   final ShadThemeData theme;
@@ -17,6 +18,7 @@ class UploadContentView extends StatelessWidget {
   final VoidCallback onUploadFile;
   final VoidCallback onClearFile;
   final ImportState state;
+  final VoidCallback onSelectInternalResume;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,9 @@ class UploadContentView extends StatelessWidget {
         ),
         const SizedBox(height: 32),
         Text(
-          context.s.uploadResumeTitle,
+          selectedFile == null 
+              ? context.s.uploadResumePageTitleAnalyze
+              : context.s.uploadResumePageTitleUpload,
           style: theme.textTheme.h3.copyWith(
             color: theme.colorScheme.foreground,
             fontWeight: FontWeight.w600,
@@ -137,41 +141,110 @@ class UploadContentView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 32),
-        ShadButton.destructive(
-          onPressed: state == ImportState.initial 
-              ? (selectedFile == null ? onPickFile : onUploadFile) 
-              : null,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                selectedFile == null ? Icons.attach_file_rounded : Icons.check_rounded,
-                size: 20,
-                color: Colors.white,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                selectedFile == null 
-                    ? context.s.uploadResumeChooseFile 
-                    : context.s.uploadResumeUploadButton,
-                style: theme.textTheme.small.copyWith(
-                  fontWeight: FontWeight.w500,
+        if (selectedFile == null) ...[
+          ShadButton.destructive(
+            onPressed: onSelectInternalResume,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.description_rounded,
+                  size: 20,
                   color: Colors.white,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  context.s.uploadResumeSelectExisting,
+                  style: theme.textTheme.small.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 1,
+                  color: theme.colorScheme.border,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  context.s.uploadResumeOrText,
+                  style: theme.textTheme.small.copyWith(
+                    color: theme.colorScheme.secondaryForeground,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 1,
+                  color: theme.colorScheme.border,
                 ),
               ),
             ],
           ),
-        ),
-        if (selectedFile == null) ...[
+          const SizedBox(height: 16),
+          ShadButton.outline(
+            onPressed: onPickFile,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.upload_file_rounded,
+                  size: 20,
+                  color: theme.colorScheme.primary,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  selectedFile == null 
+                      ? context.s.uploadResumeAnalyzeButton
+                      : context.s.uploadResumeUploadButton,
+                  style: theme.textTheme.small.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 24),
           AnimatedOpacity(
             duration: const Duration(milliseconds: 200),
             opacity: selectedFile == null ? 1.0 : 0.0,
             child: Text(
-              context.s.uploadResumeDragDrop,
+              'or ${context.s.uploadResumeDragDrop}',
               style: theme.textTheme.small.copyWith(
                 color: theme.colorScheme.secondaryForeground,
+                fontWeight: FontWeight.w400,
               ),
+            ),
+          ),
+        ] else ...[
+          ShadButton.destructive(
+            onPressed: state == ImportState.initial ? onUploadFile : null,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.check_rounded,
+                  size: 20,
+                  color: Colors.white,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  context.s.uploadResumeUploadButton,
+                  style: theme.textTheme.small.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

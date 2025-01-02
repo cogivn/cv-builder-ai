@@ -24,6 +24,7 @@ mixin _$ImportResumeState {
   List<String> get skills => throw _privateConstructorUsedError;
   List<String> get experience => throw _privateConstructorUsedError;
   List<String> get education => throw _privateConstructorUsedError;
+  String? get selectedInternalResumeId => throw _privateConstructorUsedError;
 
   /// Create a copy of ImportResumeState
   /// with the given fields replaced by the non-null parameter values.
@@ -45,7 +46,8 @@ abstract class $ImportResumeStateCopyWith<$Res> {
       String? error,
       List<String> skills,
       List<String> experience,
-      List<String> education});
+      List<String> education,
+      String? selectedInternalResumeId});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$ImportResumeStateCopyWithImpl<$Res, $Val extends ImportResumeState>
     Object? skills = null,
     Object? experience = null,
     Object? education = null,
+    Object? selectedInternalResumeId = freezed,
   }) {
     return _then(_value.copyWith(
       importState: null == importState
@@ -100,6 +103,10 @@ class _$ImportResumeStateCopyWithImpl<$Res, $Val extends ImportResumeState>
           ? _value.education
           : education // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      selectedInternalResumeId: freezed == selectedInternalResumeId
+          ? _value.selectedInternalResumeId
+          : selectedInternalResumeId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -119,7 +126,8 @@ abstract class _$$ImportResumeStateImplCopyWith<$Res>
       String? error,
       List<String> skills,
       List<String> experience,
-      List<String> education});
+      List<String> education,
+      String? selectedInternalResumeId});
 }
 
 /// @nodoc
@@ -142,6 +150,7 @@ class __$$ImportResumeStateImplCopyWithImpl<$Res>
     Object? skills = null,
     Object? experience = null,
     Object? education = null,
+    Object? selectedInternalResumeId = freezed,
   }) {
     return _then(_$ImportResumeStateImpl(
       importState: null == importState
@@ -172,6 +181,10 @@ class __$$ImportResumeStateImplCopyWithImpl<$Res>
           ? _value._education
           : education // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      selectedInternalResumeId: freezed == selectedInternalResumeId
+          ? _value.selectedInternalResumeId
+          : selectedInternalResumeId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -186,7 +199,8 @@ class _$ImportResumeStateImpl implements _ImportResumeState {
       this.error,
       final List<String> skills = const [],
       final List<String> experience = const [],
-      final List<String> education = const []})
+      final List<String> education = const [],
+      this.selectedInternalResumeId})
       : _skills = skills,
         _experience = experience,
         _education = education;
@@ -228,8 +242,11 @@ class _$ImportResumeStateImpl implements _ImportResumeState {
   }
 
   @override
+  final String? selectedInternalResumeId;
+
+  @override
   String toString() {
-    return 'ImportResumeState(importState: $importState, selectedFile: $selectedFile, animationController: $animationController, error: $error, skills: $skills, experience: $experience, education: $education)';
+    return 'ImportResumeState(importState: $importState, selectedFile: $selectedFile, animationController: $animationController, error: $error, skills: $skills, experience: $experience, education: $education, selectedInternalResumeId: $selectedInternalResumeId)';
   }
 
   @override
@@ -248,7 +265,10 @@ class _$ImportResumeStateImpl implements _ImportResumeState {
             const DeepCollectionEquality()
                 .equals(other._experience, _experience) &&
             const DeepCollectionEquality()
-                .equals(other._education, _education));
+                .equals(other._education, _education) &&
+            (identical(
+                    other.selectedInternalResumeId, selectedInternalResumeId) ||
+                other.selectedInternalResumeId == selectedInternalResumeId));
   }
 
   @override
@@ -260,7 +280,8 @@ class _$ImportResumeStateImpl implements _ImportResumeState {
       error,
       const DeepCollectionEquality().hash(_skills),
       const DeepCollectionEquality().hash(_experience),
-      const DeepCollectionEquality().hash(_education));
+      const DeepCollectionEquality().hash(_education),
+      selectedInternalResumeId);
 
   /// Create a copy of ImportResumeState
   /// with the given fields replaced by the non-null parameter values.
@@ -280,7 +301,8 @@ abstract class _ImportResumeState implements ImportResumeState {
       final String? error,
       final List<String> skills,
       final List<String> experience,
-      final List<String> education}) = _$ImportResumeStateImpl;
+      final List<String> education,
+      final String? selectedInternalResumeId}) = _$ImportResumeStateImpl;
 
   @override
   ImportState get importState;
@@ -296,6 +318,8 @@ abstract class _ImportResumeState implements ImportResumeState {
   List<String> get experience;
   @override
   List<String> get education;
+  @override
+  String? get selectedInternalResumeId;
 
   /// Create a copy of ImportResumeState
   /// with the given fields replaced by the non-null parameter values.

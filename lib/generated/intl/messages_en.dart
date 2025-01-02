@@ -28,9 +28,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(allowedTypes) =>
       "File type not supported. Allowed types: ${allowedTypes}";
 
-  static String m3(progress) => "${progress}%";
+  static String m3(day, month, year) => "${day}/${month}/${year}";
 
-  static String m4(size) => "${size} KB";
+  static String m4(days) => "${days} days ago";
+
+  static String m5(progress) => "${progress}%";
+
+  static String m6(size) => "${size} KB";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -150,14 +154,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerSignUpButton": MessageLookupByLibrary.simpleMessage("Sign up"),
         "registerSubtitle": MessageLookupByLibrary.simpleMessage(
             "Enter your email below to create your account"),
-        "uploadProgressPercentage": m3,
+        "resumePickerModifiedDate": m3,
+        "resumePickerModifiedDaysAgo": m4,
+        "resumePickerModifiedToday":
+            MessageLookupByLibrary.simpleMessage("Today"),
+        "resumePickerModifiedYesterday":
+            MessageLookupByLibrary.simpleMessage("Yesterday"),
+        "resumePickerSubtitle":
+            MessageLookupByLibrary.simpleMessage("Choose a resume to analyze"),
+        "resumePickerTitle":
+            MessageLookupByLibrary.simpleMessage("Select Resume"),
+        "uploadProgressPercentage": m5,
         "uploadProgressTitle":
             MessageLookupByLibrary.simpleMessage("Uploading Resume..."),
+        "uploadResumeAnalyzeButton":
+            MessageLookupByLibrary.simpleMessage("Upload Resume"),
         "uploadResumeChooseFile":
             MessageLookupByLibrary.simpleMessage("Choose File"),
         "uploadResumeDragDrop": MessageLookupByLibrary.simpleMessage(
             "or drag and drop your file here"),
-        "uploadResumeFileSize": m4,
+        "uploadResumeFileSize": m6,
+        "uploadResumeOrText": MessageLookupByLibrary.simpleMessage("OR"),
+        "uploadResumePageTitleAnalyze":
+            MessageLookupByLibrary.simpleMessage("Analyze Your Resume"),
+        "uploadResumePageTitleUpload":
+            MessageLookupByLibrary.simpleMessage("Upload Your Resume"),
+        "uploadResumeSelectExisting":
+            MessageLookupByLibrary.simpleMessage("Select from Your Resumes"),
         "uploadResumeSupportedFormats": MessageLookupByLibrary.simpleMessage(
             "Supported formats: PDF, DOC, DOCX"),
         "uploadResumeTitle":
