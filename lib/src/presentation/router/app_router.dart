@@ -5,6 +5,7 @@ import '../pages/auth/login_page.dart';
 import '../pages/auth/register_page.dart';
 import '../pages/cv/cv_list_page.dart';
 import '../pages/dashboard/dashboard_page.dart';
+import '../pages/import_resume/import_resume_page.dart';
 import '../pages/onboarding/onboarding_page.dart';
 import '../pages/splash/splash_page.dart';
 import 'guards/auth_guard.dart';
@@ -35,6 +36,10 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(
           page: CVListRoute.page,
+          guards: [_authGuard],
+        ),
+        AutoRoute(
+          page: ImportResumeRoute.page,
           guards: [_authGuard],
         ),
       ];

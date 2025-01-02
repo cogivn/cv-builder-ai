@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import '../../../router/app_router.dart';
 
 class QuickAction {
   final String title;
@@ -30,7 +32,9 @@ class QuickActions extends StatelessWidget {
       QuickAction(
         title: 'Import Resume',
         icon: Icons.upload_file_rounded,
-        onTap: () {},
+        onTap: () {
+          context.router.push(const ImportResumeRoute());
+        },
       ),
       QuickAction(
         title: 'Browse Templates',

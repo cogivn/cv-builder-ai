@@ -48,6 +48,25 @@ class DashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ImportResumePage]
+class ImportResumeRoute extends PageRouteInfo<void> {
+  const ImportResumeRoute({List<PageRouteInfo>? children})
+      : super(
+          ImportResumeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ImportResumeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ImportResumePage();
+    },
+  );
+}
+
+/// generated route for
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
   LoginRoute({
