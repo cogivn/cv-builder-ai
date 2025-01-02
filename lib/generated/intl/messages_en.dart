@@ -28,6 +28,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m2(allowedTypes) =>
       "File type not supported. Allowed types: ${allowedTypes}";
 
+  static String m3(progress) => "${progress}%";
+
+  static String m4(size) => "${size} KB";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accountHelpAndFeedback":
@@ -39,6 +43,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSettings": MessageLookupByLibrary.simpleMessage("Settings"),
         "accountTermsOfService":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
+        "analysisAIProcessingInfo": MessageLookupByLibrary.simpleMessage(
+            "Your resume has been processed with AI to extract skills, experience, and more."),
+        "analysisCompleteDescription": MessageLookupByLibrary.simpleMessage(
+            "We\'ve successfully analyzed your resume.\nView the detailed analysis to see what we found."),
+        "analysisCompleteTitle":
+            MessageLookupByLibrary.simpleMessage("Analysis Complete!"),
+        "analysisDismissButton":
+            MessageLookupByLibrary.simpleMessage("Dismiss"),
+        "analysisViewButton":
+            MessageLookupByLibrary.simpleMessage("View Analysis"),
+        "analyzingDescription": MessageLookupByLibrary.simpleMessage(
+            "Our AI is carefully reviewing your resume.\nThis may take a few minutes."),
+        "analyzingNotification": MessageLookupByLibrary.simpleMessage(
+            "Feel free to explore other sections. We\'ll notify you when the analysis is complete."),
+        "analyzingProgressDescription": MessageLookupByLibrary.simpleMessage(
+            "Extracting skills, experience, and qualifications"),
+        "analyzingProgressTitle":
+            MessageLookupByLibrary.simpleMessage("AI Analysis in Progress"),
+        "analyzingSkipButton": MessageLookupByLibrary.simpleMessage("Skip"),
+        "analyzingTitle":
+            MessageLookupByLibrary.simpleMessage("Analyzing Your Resume"),
         "apiErrorBadRequest":
             MessageLookupByLibrary.simpleMessage("Bad request"),
         "apiErrorCancelled":
@@ -95,6 +120,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enter your email to sign in to your account"),
         "loginWelcomeBack":
             MessageLookupByLibrary.simpleMessage("Welcome back"),
+        "quickActionsBrowseTemplates":
+            MessageLookupByLibrary.simpleMessage("Browse Templates"),
+        "quickActionsCreateResume":
+            MessageLookupByLibrary.simpleMessage("Create Resume"),
+        "quickActionsImportResume":
+            MessageLookupByLibrary.simpleMessage("Upload Resume"),
+        "quickActionsTitle":
+            MessageLookupByLibrary.simpleMessage("Quick Actions"),
         "registerCreateAccount":
             MessageLookupByLibrary.simpleMessage("Create an account"),
         "registerEmailPlaceholder":
@@ -116,6 +149,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerSignInButton": MessageLookupByLibrary.simpleMessage("Sign in"),
         "registerSignUpButton": MessageLookupByLibrary.simpleMessage("Sign up"),
         "registerSubtitle": MessageLookupByLibrary.simpleMessage(
-            "Enter your email below to create your account")
+            "Enter your email below to create your account"),
+        "uploadProgressPercentage": m3,
+        "uploadProgressTitle":
+            MessageLookupByLibrary.simpleMessage("Uploading Resume..."),
+        "uploadResumeChooseFile":
+            MessageLookupByLibrary.simpleMessage("Choose File"),
+        "uploadResumeDragDrop": MessageLookupByLibrary.simpleMessage(
+            "or drag and drop your file here"),
+        "uploadResumeFileSize": m4,
+        "uploadResumeSupportedFormats": MessageLookupByLibrary.simpleMessage(
+            "Supported formats: PDF, DOC, DOCX"),
+        "uploadResumeTitle":
+            MessageLookupByLibrary.simpleMessage("Upload Your Resume"),
+        "uploadResumeUploadButton":
+            MessageLookupByLibrary.simpleMessage("Upload Resume")
       };
 }

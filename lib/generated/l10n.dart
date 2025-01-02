@@ -589,6 +589,236 @@ class S {
       args: [],
     );
   }
+
+  /// `Quick Actions`
+  String get quickActionsTitle {
+    return Intl.message(
+      'Quick Actions',
+      name: 'quickActionsTitle',
+      desc: 'Title for the quick actions section',
+      args: [],
+    );
+  }
+
+  /// `Create Resume`
+  String get quickActionsCreateResume {
+    return Intl.message(
+      'Create Resume',
+      name: 'quickActionsCreateResume',
+      desc: 'Title for create resume quick action',
+      args: [],
+    );
+  }
+
+  /// `Upload Resume`
+  String get quickActionsImportResume {
+    return Intl.message(
+      'Upload Resume',
+      name: 'quickActionsImportResume',
+      desc: 'Title for import resume quick action',
+      args: [],
+    );
+  }
+
+  /// `Browse Templates`
+  String get quickActionsBrowseTemplates {
+    return Intl.message(
+      'Browse Templates',
+      name: 'quickActionsBrowseTemplates',
+      desc: 'Title for browse templates quick action',
+      args: [],
+    );
+  }
+
+  /// `Analysis Complete!`
+  String get analysisCompleteTitle {
+    return Intl.message(
+      'Analysis Complete!',
+      name: 'analysisCompleteTitle',
+      desc: 'Title shown when resume analysis is complete',
+      args: [],
+    );
+  }
+
+  /// `We've successfully analyzed your resume.\nView the detailed analysis to see what we found.`
+  String get analysisCompleteDescription {
+    return Intl.message(
+      'We\'ve successfully analyzed your resume.\nView the detailed analysis to see what we found.',
+      name: 'analysisCompleteDescription',
+      desc: 'Description shown when resume analysis is complete',
+      args: [],
+    );
+  }
+
+  /// `Your resume has been processed with AI to extract skills, experience, and more.`
+  String get analysisAIProcessingInfo {
+    return Intl.message(
+      'Your resume has been processed with AI to extract skills, experience, and more.',
+      name: 'analysisAIProcessingInfo',
+      desc: 'Information about AI processing of the resume',
+      args: [],
+    );
+  }
+
+  /// `View Analysis`
+  String get analysisViewButton {
+    return Intl.message(
+      'View Analysis',
+      name: 'analysisViewButton',
+      desc: 'Button text to view the analysis',
+      args: [],
+    );
+  }
+
+  /// `Dismiss`
+  String get analysisDismissButton {
+    return Intl.message(
+      'Dismiss',
+      name: 'analysisDismissButton',
+      desc: 'Button text to dismiss the analysis completion view',
+      args: [],
+    );
+  }
+
+  /// `Analyzing Your Resume`
+  String get analyzingTitle {
+    return Intl.message(
+      'Analyzing Your Resume',
+      name: 'analyzingTitle',
+      desc: 'Title shown while analyzing resume',
+      args: [],
+    );
+  }
+
+  /// `Our AI is carefully reviewing your resume.\nThis may take a few minutes.`
+  String get analyzingDescription {
+    return Intl.message(
+      'Our AI is carefully reviewing your resume.\nThis may take a few minutes.',
+      name: 'analyzingDescription',
+      desc: 'Description shown while analyzing resume',
+      args: [],
+    );
+  }
+
+  /// `AI Analysis in Progress`
+  String get analyzingProgressTitle {
+    return Intl.message(
+      'AI Analysis in Progress',
+      name: 'analyzingProgressTitle',
+      desc: 'Title for the progress section while analyzing',
+      args: [],
+    );
+  }
+
+  /// `Extracting skills, experience, and qualifications`
+  String get analyzingProgressDescription {
+    return Intl.message(
+      'Extracting skills, experience, and qualifications',
+      name: 'analyzingProgressDescription',
+      desc: 'Description of what\'s being extracted during analysis',
+      args: [],
+    );
+  }
+
+  /// `Feel free to explore other sections. We'll notify you when the analysis is complete.`
+  String get analyzingNotification {
+    return Intl.message(
+      'Feel free to explore other sections. We\'ll notify you when the analysis is complete.',
+      name: 'analyzingNotification',
+      desc: 'Message informing user they can explore while waiting',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get analyzingSkipButton {
+    return Intl.message(
+      'Skip',
+      name: 'analyzingSkipButton',
+      desc: 'Button text to skip the analysis',
+      args: [],
+    );
+  }
+
+  /// `Upload Your Resume`
+  String get uploadResumeTitle {
+    return Intl.message(
+      'Upload Your Resume',
+      name: 'uploadResumeTitle',
+      desc: 'Title for the upload resume section',
+      args: [],
+    );
+  }
+
+  /// `Supported formats: PDF, DOC, DOCX`
+  String get uploadResumeSupportedFormats {
+    return Intl.message(
+      'Supported formats: PDF, DOC, DOCX',
+      name: 'uploadResumeSupportedFormats',
+      desc: 'Text showing supported file formats',
+      args: [],
+    );
+  }
+
+  /// `Choose File`
+  String get uploadResumeChooseFile {
+    return Intl.message(
+      'Choose File',
+      name: 'uploadResumeChooseFile',
+      desc: 'Button text to choose a file',
+      args: [],
+    );
+  }
+
+  /// `Upload Resume`
+  String get uploadResumeUploadButton {
+    return Intl.message(
+      'Upload Resume',
+      name: 'uploadResumeUploadButton',
+      desc: 'Button text to upload the selected resume',
+      args: [],
+    );
+  }
+
+  /// `or drag and drop your file here`
+  String get uploadResumeDragDrop {
+    return Intl.message(
+      'or drag and drop your file here',
+      name: 'uploadResumeDragDrop',
+      desc: 'Text suggesting drag and drop functionality',
+      args: [],
+    );
+  }
+
+  /// `{size} KB`
+  String uploadResumeFileSize(Object size) {
+    return Intl.message(
+      '$size KB',
+      name: 'uploadResumeFileSize',
+      desc: 'Text showing file size in KB',
+      args: [size],
+    );
+  }
+
+  /// `Uploading Resume...`
+  String get uploadProgressTitle {
+    return Intl.message(
+      'Uploading Resume...',
+      name: 'uploadProgressTitle',
+      desc: 'Title shown while uploading resume',
+      args: [],
+    );
+  }
+
+  /// `{progress}%`
+  String uploadProgressPercentage(Object progress) {
+    return Intl.message(
+      '$progress%',
+      name: 'uploadProgressPercentage',
+      desc: 'Text showing upload progress percentage',
+      args: [progress],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

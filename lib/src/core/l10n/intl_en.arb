@@ -1,0 +1,23 @@
+{
+  "@@locale": "en",
+  
+  "quickActionsTitle": "Quick Actions",
+  "@quickActionsTitle": {
+    "description": "Title for the quick actions section"
+  },
+
+  "quickActionCreateResume": "Create Resume",
+  "@quickActionCreateResume": {
+    "description": "Label for create resume action"
+  },
+
+  "quickActionImportResume": "Import Resume",
+  "@quickActionImportResume": {
+    "description": "Label for import resume action"
+  },
+
+  "quickActionBrowseTemplates": "Browse Templates",
+  "@quickActionBrowseTemplates": {
+    "description": "Label for browse templates action"
+  }
+}

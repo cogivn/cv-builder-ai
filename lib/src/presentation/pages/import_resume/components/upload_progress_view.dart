@@ -51,7 +51,7 @@ class UploadProgressView extends StatelessWidget {
                       child: CircularProgressIndicator(
                         value: progressAnimation.value,
                         strokeWidth: 8,
-                        backgroundColor: theme.colorScheme.primary.withOpacity(0.2),
+                        backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.2),
                         valueColor: AlwaysStoppedAnimation<Color>(theme.colorScheme.primary),
                       ),
                     ),
@@ -64,7 +64,7 @@ class UploadProgressView extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 Text(
-                  'Uploading Resume...',
+                  context.s.uploadProgressTitle,
                   style: theme.textTheme.h4.copyWith(
                     color: theme.colorScheme.foreground,
                     fontWeight: FontWeight.w600,
@@ -72,7 +72,9 @@ class UploadProgressView extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  '${(progressAnimation.value * 100).toInt()}%',
+                  context.s.uploadProgressPercentage(
+                    (progressAnimation.value * 100).toInt(),
+                  ),
                   style: theme.textTheme.small.copyWith(
                     color: theme.colorScheme.secondaryForeground,
                   ),

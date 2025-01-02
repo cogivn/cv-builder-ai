@@ -33,8 +33,8 @@ class _ResumeSectionState extends State<ResumeSection>
     );
 
     _rotationAnimation = Tween<double>(
-      begin: 0,
-      end: 0.25,
+      begin: 0.25,   // Start at 90 degrees (0.25 turns)
+      end: 0.5,      // End at 180 degrees (0.5 turns)
     ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeInOut,
@@ -65,7 +65,7 @@ class _ResumeSectionState extends State<ResumeSection>
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withOpacity(0.1),
+              color: theme.colorScheme.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(

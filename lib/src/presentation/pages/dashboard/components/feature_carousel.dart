@@ -91,8 +91,8 @@ class _FeatureCarouselState extends State<FeatureCarousel> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        item.color.withOpacity(0.8),
-                        item.color.withOpacity(0.6),
+                        item.color.withValues(alpha: 0.8),
+                        item.color.withValues(alpha: 0.6),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(24),
@@ -103,7 +103,7 @@ class _FeatureCarouselState extends State<FeatureCarousel> {
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Icon(
@@ -124,7 +124,7 @@ class _FeatureCarouselState extends State<FeatureCarousel> {
                       Text(
                         item.description,
                         style: theme.textTheme.small.copyWith(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                         ),
                       ),
                     ],

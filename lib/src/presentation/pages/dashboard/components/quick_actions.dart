@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cv_builder_ai/src/core/l10n/messages.dart';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+
 import '../../../router/app_router.dart';
 
 class QuickAction {
@@ -25,19 +27,19 @@ class QuickActions extends StatelessWidget {
 
     final quickActions = [
       QuickAction(
-        title: 'Create Resume',
+        title: context.s.quickActionsCreateResume,
         icon: Icons.add_rounded,
         onTap: () {},
       ),
       QuickAction(
-        title: 'Import Resume',
+        title: context.s.quickActionsImportResume,
         icon: Icons.upload_file_rounded,
         onTap: () {
           context.router.push(const ImportResumeRoute());
         },
       ),
       QuickAction(
-        title: 'Browse Templates',
+        title: context.s.quickActionsBrowseTemplates,
         icon: Icons.style_rounded,
         onTap: () {},
       ),
@@ -47,7 +49,7 @@ class QuickActions extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Quick Actions',
+          context.s.quickActionsTitle,
           style: theme.textTheme.large.copyWith(
             color: colorScheme.foreground,
             fontWeight: FontWeight.w600,
@@ -146,19 +148,19 @@ class _QuickActionCardState extends State<_QuickActionCard>
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: _isPressed
-                  ? colorScheme.primary.withOpacity(0.05)
+                  ? colorScheme.primary.withValues(alpha: 0.05)
                   : colorScheme.card,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: _isPressed
-                    ? colorScheme.primary.withOpacity(0.2)
+                    ? colorScheme.primary.withValues(alpha: 0.2)
                     : colorScheme.border,
                 width: 1,
               ),
               boxShadow: [
                 if (!_isPressed)
                   BoxShadow(
-                    color: colorScheme.border.withOpacity(0.1),
+                    color: colorScheme.border.withValues(alpha: 0.1),
                     blurRadius: 8,
                     offset: const Offset(0, 4),
                   ),
@@ -170,7 +172,7 @@ class _QuickActionCardState extends State<_QuickActionCard>
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: colorScheme.primary.withOpacity(0.1),
+                    color: colorScheme.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(

@@ -26,7 +26,7 @@ class UploadContentView extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withOpacity(0.1),
+            color: theme.colorScheme.primary.withValues(alpha: 0.1),
             shape: BoxShape.circle,
           ),
           child: Icon(
@@ -37,7 +37,7 @@ class UploadContentView extends StatelessWidget {
         ),
         const SizedBox(height: 32),
         Text(
-          'Upload Your Resume',
+          context.s.uploadResumeTitle,
           style: theme.textTheme.h3.copyWith(
             color: theme.colorScheme.foreground,
             fontWeight: FontWeight.w600,
@@ -45,7 +45,7 @@ class UploadContentView extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         Text(
-          'Supported formats: PDF, DOC, DOCX',
+          context.s.uploadResumeSupportedFormats,
           style: theme.textTheme.small.copyWith(
             color: theme.colorScheme.secondaryForeground,
           ),
@@ -78,10 +78,10 @@ class UploadContentView extends StatelessWidget {
                     key: ValueKey(selectedFile?.path),
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     decoration: BoxDecoration(
-                      color: theme.colorScheme.secondary.withOpacity(0.1),
+                      color: theme.colorScheme.secondary.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: theme.colorScheme.secondary.withOpacity(0.2),
+                        color: theme.colorScheme.secondary.withValues(alpha: 0.2),
                       ),
                     ),
                     child: Row(
@@ -89,7 +89,7 @@ class UploadContentView extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: theme.colorScheme.primary.withOpacity(0.1),
+                            color: theme.colorScheme.primary.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Icon(
@@ -113,7 +113,9 @@ class UploadContentView extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                               ),
                               Text(
-                                '${((selectedFile?.lengthSync() ?? 0) / 1024).toStringAsFixed(2)} KB',
+                                context.s.uploadResumeFileSize(
+                                  ((selectedFile?.lengthSync() ?? 0) / 1024).toStringAsFixed(2),
+                                ),
                                 style: theme.textTheme.small.copyWith(
                                   color: theme.colorScheme.secondaryForeground,
                                 ),
@@ -149,7 +151,9 @@ class UploadContentView extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                selectedFile == null ? 'Choose File' : 'Upload Resume',
+                selectedFile == null 
+                    ? context.s.uploadResumeChooseFile 
+                    : context.s.uploadResumeUploadButton,
                 style: theme.textTheme.small.copyWith(
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
@@ -164,7 +168,7 @@ class UploadContentView extends StatelessWidget {
             duration: const Duration(milliseconds: 200),
             opacity: selectedFile == null ? 1.0 : 0.0,
             child: Text(
-              'or drag and drop your file here',
+              context.s.uploadResumeDragDrop,
               style: theme.textTheme.small.copyWith(
                 color: theme.colorScheme.secondaryForeground,
               ),

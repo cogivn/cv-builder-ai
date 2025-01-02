@@ -200,5 +200,103 @@
   "accountTermsOfService": "Terms of Service",
   "@accountTermsOfService": {
     "description": "Terms of service option in account bottom sheet"
+  },
+  "quickActionsTitle": "Quick Actions",
+  "@quickActionsTitle": {
+    "description": "Title for the quick actions section"
+  },
+  "quickActionsCreateResume": "Create Resume",
+  "@quickActionsCreateResume": {
+    "description": "Title for create resume quick action"
+  },
+  "quickActionsImportResume": "Upload Resume",
+  "@quickActionsImportResume": {
+    "description": "Title for import resume quick action"
+  },
+  "quickActionsBrowseTemplates": "Browse Templates",
+  "@quickActionsBrowseTemplates": {
+    "description": "Title for browse templates quick action"
+  },
+  "analysisCompleteTitle": "Analysis Complete!",
+  "@analysisCompleteTitle": {
+    "description": "Title shown when resume analysis is complete"
+  },
+  "analysisCompleteDescription": "We've successfully analyzed your resume.\nView the detailed analysis to see what we found.",
+  "@analysisCompleteDescription": {
+    "description": "Description shown when resume analysis is complete"
+  },
+  "analysisAIProcessingInfo": "Your resume has been processed with AI to extract skills, experience, and more.",
+  "@analysisAIProcessingInfo": {
+    "description": "Information about AI processing of the resume"
+  },
+  "analysisViewButton": "View Analysis",
+  "@analysisViewButton": {
+    "description": "Button text to view the analysis"
+  },
+  "analysisDismissButton": "Dismiss",
+  "@analysisDismissButton": {
+    "description": "Button text to dismiss the analysis completion view"
+  },
+  "analyzingTitle": "Analyzing Your Resume",
+  "@analyzingTitle": {
+    "description": "Title shown while analyzing resume"
+  },
+  "analyzingDescription": "Our AI is carefully reviewing your resume.\nThis may take a few minutes.",
+  "@analyzingDescription": {
+    "description": "Description shown while analyzing resume"
+  },
+  "analyzingProgressTitle": "AI Analysis in Progress",
+  "@analyzingProgressTitle": {
+    "description": "Title for the progress section while analyzing"
+  },
+  "analyzingProgressDescription": "Extracting skills, experience, and qualifications",
+  "@analyzingProgressDescription": {
+    "description": "Description of what's being extracted during analysis"
+  },
+  "analyzingNotification": "Feel free to explore other sections. We'll notify you when the analysis is complete.",
+  "@analyzingNotification": {
+    "description": "Message informing user they can explore while waiting"
+  },
+  "analyzingSkipButton": "Skip",
+  "@analyzingSkipButton": {
+    "description": "Button text to skip the analysis"
+  },
+  "uploadResumeTitle": "Upload Your Resume",
+  "@uploadResumeTitle": {
+    "description": "Title for the upload resume section"
+  },
+  "uploadResumeSupportedFormats": "Supported formats: PDF, DOC, DOCX",
+  "@uploadResumeSupportedFormats": {
+    "description": "Text showing supported file formats"
+  },
+  "uploadResumeChooseFile": "Choose File",
+  "@uploadResumeChooseFile": {
+    "description": "Button text to choose a file"
+  },
+  "uploadResumeUploadButton": "Upload Resume",
+  "@uploadResumeUploadButton": {
+    "description": "Button text to upload the selected resume"
+  },
+  "uploadResumeDragDrop": "or drag and drop your file here",
+  "@uploadResumeDragDrop": {
+    "description": "Text suggesting drag and drop functionality"
+  },
+  "uploadResumeFileSize": "{size} KB",
+  "@uploadResumeFileSize": {
+    "description": "Text showing file size in KB",
+    "placeholders": {
+      "size": {}
+    }
+  },
+  "uploadProgressTitle": "Uploading Resume...",
+  "@uploadProgressTitle": {
+    "description": "Title shown while uploading resume"
+  },
+  "uploadProgressPercentage": "{progress}%",
+  "@uploadProgressPercentage": {
+    "description": "Text showing upload progress percentage",
+    "placeholders": {
+      "progress": {}
+    }
   }
 }

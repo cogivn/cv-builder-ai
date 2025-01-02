@@ -27,7 +27,7 @@ class ActionButton extends StatelessWidget {
             width: 64,
             height: 64,
             decoration: BoxDecoration(
-              color: colorScheme.primary.withOpacity(0.1),
+              color: colorScheme.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Icon(
