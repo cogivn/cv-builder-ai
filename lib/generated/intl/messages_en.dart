@@ -125,7 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quickActionsCreateResume":
             MessageLookupByLibrary.simpleMessage("Create Resume"),
         "quickActionsImportResume":
-            MessageLookupByLibrary.simpleMessage("Upload Resume"),
+            MessageLookupByLibrary.simpleMessage("Analyze Resume"),
         "quickActionsTitle":
             MessageLookupByLibrary.simpleMessage("Quick Actions"),
         "registerCreateAccount":

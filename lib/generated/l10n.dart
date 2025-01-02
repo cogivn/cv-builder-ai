@@ -610,10 +610,10 @@ class S {
     );
   }
 
-  /// `Upload Resume`
+  /// `Analyze Resume`
   String get quickActionsImportResume {
     return Intl.message(
-      'Upload Resume',
+      'Analyze Resume',
       name: 'quickActionsImportResume',
       desc: 'Title for import resume quick action',
       args: [],

@@ -209,7 +209,7 @@
   "@quickActionsCreateResume": {
     "description": "Title for create resume quick action"
   },
-  "quickActionsImportResume": "Upload Resume",
+  "quickActionsImportResume": "Analyze Resume",
   "@quickActionsImportResume": {
     "description": "Title for import resume quick action"
   },
