@@ -41,19 +41,6 @@ class _SplashPageState extends ConsumerState<SplashPage> {
 
       // Check authentication state
       ref.read(splashControllerProvider.notifier).checkAuthStatus();
-
-      // Listen to auth state changes
-      ref.listen(authControllerProvider, (previous, next) {
-        next.whenOrNull(
-          authenticated: (_) =>
-              context.router.replaceAll([const DashboardRoute()]),
-          unauthenticated: () => context.router.replaceAll([LoginRoute()]),
-          error: (message) {
-            logger.e('Auth error: $message');
-            context.router.replaceAll([LoginRoute()]);
-          },
-        );
-      });
     } catch (e, stackTrace) {
       logger.e('Error in splash initialization',
           error: e, stackTrace: stackTrace);
@@ -66,6 +53,18 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   Widget build(BuildContext context) {
     final theme = ShadTheme.of(context);
     final colorScheme = theme.colorScheme;
+
+    // Listen to auth state changes in build method
+    ref.listen(authControllerProvider, (previous, next) {
+      next.whenOrNull(
+        authenticated: (_) => context.router.replaceAll([const DashboardRoute()]),
+        unauthenticated: () => context.router.replaceAll([LoginRoute()]),
+        error: (message) {
+          logger.e('Auth error: $message');
+          context.router.replaceAll([LoginRoute()]);
+        },
+      );
+    });
 
     return Scaffold(
       backgroundColor: colorScheme.background,
