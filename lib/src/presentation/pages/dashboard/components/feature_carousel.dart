@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class FeatureCarousel extends StatefulWidget {
   const FeatureCarousel({super.key});
@@ -76,7 +77,7 @@ class _FeatureCarouselState extends State<FeatureCarousel> {
                 _currentPage = index % _items.length;
               });
             },
-            itemCount: null, // Makes it infinite
+            itemCount: null,
             itemBuilder: (context, index) {
               final item = _items[index % _items.length];
               return AnimatedScale(
@@ -134,22 +135,26 @@ class _FeatureCarouselState extends State<FeatureCarousel> {
           ),
         ),
         const SizedBox(height: 16),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            _items.length,
-            (index) => Container(
-              width: 8,
-              height: 8,
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _currentPage == index
-                    ? colorScheme.primary
-                    : colorScheme.muted,
-              ),
-            ),
+        SmoothPageIndicator(
+          controller: _pageController,
+          count: _items.length,
+          effect: WormEffect(
+            dotWidth: 8,
+            dotHeight: 8,
+            spacing: 8,
+            radius: 4,
+            strokeWidth: 1.5,
+            paintStyle: PaintingStyle.fill,
+            dotColor: colorScheme.muted,
+            activeDotColor: colorScheme.primary,
           ),
+          onDotClicked: (index) {
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+            );
+          },
         ),
       ],
     );

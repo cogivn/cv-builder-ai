@@ -20,8 +20,8 @@ class DashboardPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: Text(
-          'Dashboard',
-          style: theme.textTheme.h3.copyWith(
+          'CV.AI',
+          style: theme.textTheme.h4.copyWith(
             color: theme.colorScheme.foreground,
             fontWeight: FontWeight.w600,
           ),

@@ -44,7 +44,7 @@ class QuickActions extends StatelessWidget {
       children: [
         Text(
           'Quick Actions',
-          style: theme.textTheme.h4.copyWith(
+          style: theme.textTheme.large.copyWith(
             color: colorScheme.foreground,
             fontWeight: FontWeight.w600,
           ),
