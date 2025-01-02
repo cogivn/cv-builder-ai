@@ -21,6 +21,9 @@ mixin _$ImportResumeState {
   AnimationController? get animationController =>
       throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
+  List<String> get skills => throw _privateConstructorUsedError;
+  List<String> get experience => throw _privateConstructorUsedError;
+  List<String> get education => throw _privateConstructorUsedError;
 
   /// Create a copy of ImportResumeState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,7 +42,10 @@ abstract class $ImportResumeStateCopyWith<$Res> {
       {ImportState importState,
       File? selectedFile,
       AnimationController? animationController,
-      String? error});
+      String? error,
+      List<String> skills,
+      List<String> experience,
+      List<String> education});
 }
 
 /// @nodoc
@@ -61,6 +67,9 @@ class _$ImportResumeStateCopyWithImpl<$Res, $Val extends ImportResumeState>
     Object? selectedFile = freezed,
     Object? animationController = freezed,
     Object? error = freezed,
+    Object? skills = null,
+    Object? experience = null,
+    Object? education = null,
   }) {
     return _then(_value.copyWith(
       importState: null == importState
@@ -79,6 +88,18 @@ class _$ImportResumeStateCopyWithImpl<$Res, $Val extends ImportResumeState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      skills: null == skills
+          ? _value.skills
+          : skills // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      experience: null == experience
+          ? _value.experience
+          : experience // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      education: null == education
+          ? _value.education
+          : education // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -95,7 +116,10 @@ abstract class _$$ImportResumeStateImplCopyWith<$Res>
       {ImportState importState,
       File? selectedFile,
       AnimationController? animationController,
-      String? error});
+      String? error,
+      List<String> skills,
+      List<String> experience,
+      List<String> education});
 }
 
 /// @nodoc
@@ -115,6 +139,9 @@ class __$$ImportResumeStateImplCopyWithImpl<$Res>
     Object? selectedFile = freezed,
     Object? animationController = freezed,
     Object? error = freezed,
+    Object? skills = null,
+    Object? experience = null,
+    Object? education = null,
   }) {
     return _then(_$ImportResumeStateImpl(
       importState: null == importState
@@ -133,6 +160,18 @@ class __$$ImportResumeStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      skills: null == skills
+          ? _value._skills
+          : skills // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      experience: null == experience
+          ? _value._experience
+          : experience // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      education: null == education
+          ? _value._education
+          : education // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -144,7 +183,13 @@ class _$ImportResumeStateImpl implements _ImportResumeState {
       {this.importState = ImportState.initial,
       this.selectedFile,
       this.animationController,
-      this.error});
+      this.error,
+      final List<String> skills = const [],
+      final List<String> experience = const [],
+      final List<String> education = const []})
+      : _skills = skills,
+        _experience = experience,
+        _education = education;
 
   @override
   @JsonKey()
@@ -155,10 +200,36 @@ class _$ImportResumeStateImpl implements _ImportResumeState {
   final AnimationController? animationController;
   @override
   final String? error;
+  final List<String> _skills;
+  @override
+  @JsonKey()
+  List<String> get skills {
+    if (_skills is EqualUnmodifiableListView) return _skills;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_skills);
+  }
+
+  final List<String> _experience;
+  @override
+  @JsonKey()
+  List<String> get experience {
+    if (_experience is EqualUnmodifiableListView) return _experience;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_experience);
+  }
+
+  final List<String> _education;
+  @override
+  @JsonKey()
+  List<String> get education {
+    if (_education is EqualUnmodifiableListView) return _education;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_education);
+  }
 
   @override
   String toString() {
-    return 'ImportResumeState(importState: $importState, selectedFile: $selectedFile, animationController: $animationController, error: $error)';
+    return 'ImportResumeState(importState: $importState, selectedFile: $selectedFile, animationController: $animationController, error: $error, skills: $skills, experience: $experience, education: $education)';
   }
 
   @override
@@ -172,12 +243,24 @@ class _$ImportResumeStateImpl implements _ImportResumeState {
                 other.selectedFile == selectedFile) &&
             (identical(other.animationController, animationController) ||
                 other.animationController == animationController) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            const DeepCollectionEquality().equals(other._skills, _skills) &&
+            const DeepCollectionEquality()
+                .equals(other._experience, _experience) &&
+            const DeepCollectionEquality()
+                .equals(other._education, _education));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, importState, selectedFile, animationController, error);
+      runtimeType,
+      importState,
+      selectedFile,
+      animationController,
+      error,
+      const DeepCollectionEquality().hash(_skills),
+      const DeepCollectionEquality().hash(_experience),
+      const DeepCollectionEquality().hash(_education));
 
   /// Create a copy of ImportResumeState
   /// with the given fields replaced by the non-null parameter values.
@@ -194,7 +277,10 @@ abstract class _ImportResumeState implements ImportResumeState {
       {final ImportState importState,
       final File? selectedFile,
       final AnimationController? animationController,
-      final String? error}) = _$ImportResumeStateImpl;
+      final String? error,
+      final List<String> skills,
+      final List<String> experience,
+      final List<String> education}) = _$ImportResumeStateImpl;
 
   @override
   ImportState get importState;
@@ -204,6 +290,12 @@ abstract class _ImportResumeState implements ImportResumeState {
   AnimationController? get animationController;
   @override
   String? get error;
+  @override
+  List<String> get skills;
+  @override
+  List<String> get experience;
+  @override
+  List<String> get education;
 
   /// Create a copy of ImportResumeState
   /// with the given fields replaced by the non-null parameter values.

@@ -32,6 +32,7 @@ class DashboardPage extends StatelessWidget {
             onPressed: () {
               showModalBottomSheet(
                 context: context,
+                showDragHandle: true,
                 backgroundColor: theme.colorScheme.background,
                 builder: (context) => AccountBottomSheet(
                   name: 'John Doe',

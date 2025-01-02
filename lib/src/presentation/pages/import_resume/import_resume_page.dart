@@ -7,9 +7,13 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import 'controllers/import_resume_controller.dart';
 
-part 'widgets/analyzing_view.dart';
-part 'widgets/upload_content_view.dart';
-part 'widgets/upload_progress_view.dart';
+part 'components/analyzing_view.dart';
+
+part 'components/analysis_done_view.dart';
+
+part 'components/upload_content_view.dart';
+
+part 'components/upload_progress_view.dart';
 
 @RoutePage()
 class ImportResumePage extends ConsumerStatefulWidget {
@@ -21,13 +25,34 @@ class ImportResumePage extends ConsumerStatefulWidget {
 
 class _ImportResumePageState extends ConsumerState<ImportResumePage>
     with SingleTickerProviderStateMixin {
-  
   @override
   void initState() {
     super.initState();
     Future.microtask(() {
       ref.read(importResumeControllerProvider.notifier).init(this);
     });
+  }
+
+  Widget _buildAnimatedChild(Widget child) {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return FadeTransition(
+          opacity: animation,
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 0.2),
+              end: Offset.zero,
+            ).animate(CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeOutCubic,
+            )),
+            child: child,
+          ),
+        );
+      },
+      child: child,
+    );
   }
 
   @override
@@ -44,16 +69,39 @@ class _ImportResumePageState extends ConsumerState<ImportResumePage>
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
-      } else if (next.importState == ImportState.analyzing) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: const Text('Resume is being analyzed. You can stay on this page to see the progress.'),
-            backgroundColor: Theme.of(context).colorScheme.secondary,
-            duration: const Duration(seconds: 4),
-          ),
-        );
       }
     });
+
+    Widget currentView;
+    if (state.importState == ImportState.uploading) {
+      currentView = UploadProgressView(
+        animation: state.animationController!,
+        theme: theme,
+      );
+    } else if (state.importState == ImportState.analyzing) {
+      currentView = AnalyzingView(
+        theme: theme,
+        onSkip: () => context.maybePop(),
+      );
+    } else if (state.importState == ImportState.done) {
+      currentView = AnalysisDoneView(
+        theme: theme,
+        onViewAnalysis: () {
+          // Navigate to analysis page
+          // context.router.push(const ResumeAnalysisRoute());
+        },
+        onDismiss: () => context.maybePop(),
+      );
+    } else {
+      currentView = UploadContentView(
+        theme: theme,
+        selectedFile: state.selectedFile,
+        onPickFile: controller.pickFile,
+        onUploadFile: controller.uploadFile,
+        onClearFile: controller.clearFile,
+        state: state.importState,
+      );
+    }
 
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
@@ -75,25 +123,7 @@ class _ImportResumePageState extends ConsumerState<ImportResumePage>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              if (state.importState == ImportState.uploading)
-                UploadProgressView(
-                  animation: state.animationController!,
-                  theme: theme,
-                )
-              else if (state.importState == ImportState.analyzing)
-                AnalyzingView(
-                  theme: theme,
-                  onSkip: () => context.maybePop(),
-                )
-              else
-                UploadContentView(
-                  theme: theme,
-                  selectedFile: state.selectedFile,
-                  onPickFile: controller.pickFile,
-                  onUploadFile: controller.uploadFile,
-                  onClearFile: controller.clearFile,
-                  state: state.importState,
-                ),
+              _buildAnimatedChild(currentView),
             ],
           ),
         ),

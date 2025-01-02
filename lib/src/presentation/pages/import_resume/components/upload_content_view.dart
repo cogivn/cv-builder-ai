@@ -80,19 +80,22 @@ class UploadContentView extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: theme.colorScheme.secondary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: theme.colorScheme.secondary.withOpacity(0.2),
+                      ),
                     ),
                     child: Row(
                       children: [
                         Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: theme.colorScheme.secondary.withOpacity(0.2),
+                            color: theme.colorScheme.primary.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Icon(
                             Icons.description_outlined,
                             size: 24,
-                            color: theme.colorScheme.secondary,
+                            color: theme.colorScheme.primary,
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -121,7 +124,7 @@ class UploadContentView extends StatelessWidget {
                         IconButton(
                           icon: Icon(
                             Icons.close_rounded,
-                            color: theme.colorScheme.secondaryForeground,
+                            color: theme.colorScheme.foreground,
                           ),
                           onPressed: onClearFile,
                         ),
@@ -140,7 +143,7 @@ class UploadContentView extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
-                selectedFile == null ? Icons.upload_rounded : Icons.check_rounded,
+                selectedFile == null ? Icons.attach_file_rounded : Icons.check_rounded,
                 size: 20,
                 color: Colors.white,
               ),
@@ -149,6 +152,7 @@ class UploadContentView extends StatelessWidget {
                 selectedFile == null ? 'Choose File' : 'Upload Resume',
                 style: theme.textTheme.small.copyWith(
                   fontWeight: FontWeight.w500,
+                  color: Colors.white,
                 ),
               ),
             ],

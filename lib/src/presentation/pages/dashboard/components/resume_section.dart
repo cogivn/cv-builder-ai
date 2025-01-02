@@ -17,7 +17,9 @@ class _ResumeSectionState extends State<ResumeSection>
   late final AnimationController _animationController;
   late final Animation<double> _rotationAnimation;
   late final Animation<double> _scaleAnimation;
-  bool _isGridLayout = true;
+  bool _isGridLayout = false;
+
+  static const int _maxItems = 5;
 
   // For demo purposes, set this to true to show empty state
   final bool _isEmpty = false;
@@ -45,6 +47,8 @@ class _ResumeSectionState extends State<ResumeSection>
       parent: _animationController,
       curve: Curves.easeInOut,
     ));
+    
+    _animationController.forward();
   }
 
   @override
@@ -136,7 +140,30 @@ class _ResumeSectionState extends State<ResumeSection>
         lastModified: DateTime.now().subtract(const Duration(days: 7)),
         progress: 0.95,
       ),
+      Resume(
+        id: '4',
+        title: 'Data Scientist Resume',
+        template: 'Professional',
+        lastModified: DateTime.now().subtract(const Duration(days: 10)),
+        progress: 0.75,
+      ),
+      Resume(
+        id: '5',
+        title: 'Marketing Manager Resume',
+        template: 'Creative',
+        lastModified: DateTime.now().subtract(const Duration(days: 12)),
+        progress: 0.80,
+      ),
+      Resume(
+        id: '6',
+        title: 'Frontend Developer Resume',
+        template: 'Modern',
+        lastModified: DateTime.now().subtract(const Duration(days: 15)),
+        progress: 0.90,
+      ),
     ];
+
+    final displayedItems = resumeItems.take(_maxItems).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,34 +213,75 @@ class _ResumeSectionState extends State<ResumeSection>
         if (_isEmpty)
           _buildEmptyState(theme)
         else
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            child: _isGridLayout
-                ? GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                      childAspectRatio: 1.2,
+          Column(
+            children: [
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                child: _isGridLayout
+                    ? GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                          childAspectRatio: 1.2,
+                        ),
+                        itemCount: displayedItems.length,
+                        itemBuilder: (context, index) {
+                          return ResumeGridItem(
+                            resume: displayedItems[index],
+                            onTap: () {
+                              // TODO: Implement resume tap action
+                            },
+                          );
+                        },
+                      )
+                    : ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: displayedItems.length,
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 16),
+                        itemBuilder: (context, index) {
+                          return ResumeListItem(
+                            resume: displayedItems[index],
+                            onTap: () {
+                              // TODO: Implement resume tap action
+                            },
+                          );
+                        },
+                      ),
+              ),
+              if (resumeItems.length > _maxItems) ...[
+                const SizedBox(height: 24),
+                Center(
+                  child: ShadButton.outline(
+                    onPressed: () {
+                      // Navigate to all resumes page
+                     //  context.router.push(const AllResumesRoute());
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'View All Resumes',
+                          style: theme.textTheme.small.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        const Icon(
+                          Icons.arrow_forward_rounded,
+                          size: 20,
+                        ),
+                      ],
                     ),
-                    itemCount: resumeItems.length,
-                    itemBuilder: (context, index) {
-                      return ResumeGridItem(resume: resumeItems[index], onTap: () {  },);
-                    },
-                  )
-                : ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: resumeItems.length,
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 16),
-                    itemBuilder: (context, index) {
-                      return ResumeListItem(resume: resumeItems[index], onTap: () {  },);
-                    },
                   ),
+                ),
+              ],
+            ],
           ),
       ],
     );

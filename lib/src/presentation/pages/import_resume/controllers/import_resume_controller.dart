@@ -12,6 +12,7 @@ enum ImportState {
   initial,
   uploading,
   analyzing,
+  done,
 }
 
 @riverpod
@@ -61,6 +62,16 @@ class ImportResumeController extends _$ImportResumeController {
       await Future.delayed(const Duration(seconds: 2));
       
       state = state.copyWith(importState: ImportState.analyzing);
+
+      // Simulate analysis
+      await Future.delayed(const Duration(seconds: 3));
+      
+      state = state.copyWith(
+        importState: ImportState.done,
+        skills: ['Flutter', 'Dart', 'UI/UX', 'Mobile Development'],
+        experience: ['Senior Mobile Developer', 'UI Designer'],
+        education: ['Bachelor of Computer Science'],
+      );
     } catch (e) {
       state = state.copyWith(
         importState: ImportState.initial,
@@ -77,5 +88,8 @@ class ImportResumeState with _$ImportResumeState {
     File? selectedFile,
     AnimationController? animationController,
     String? error,
+    @Default([]) List<String> skills,
+    @Default([]) List<String> experience,
+    @Default([]) List<String> education,
   }) = _ImportResumeState;
 }
