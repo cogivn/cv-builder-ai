@@ -10,6 +10,25 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [BrowseTemplatesPage]
+class BrowseTemplatesRoute extends PageRouteInfo<void> {
+  const BrowseTemplatesRoute({List<PageRouteInfo>? children})
+      : super(
+          BrowseTemplatesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BrowseTemplatesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const BrowseTemplatesPage();
+    },
+  );
+}
+
+/// generated route for
 /// [CVListPage]
 class CVListRoute extends PageRouteInfo<void> {
   const CVListRoute({List<PageRouteInfo>? children})

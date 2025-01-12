@@ -8,6 +8,7 @@ import '../pages/dashboard/dashboard_page.dart';
 import '../pages/import_resume/import_resume_page.dart';
 import '../pages/onboarding/onboarding_page.dart';
 import '../pages/splash/splash_page.dart';
+import '../pages/template/browse_templates_page.dart';
 import 'guards/auth_guard.dart';
 
 part 'app_router.gr.dart';
@@ -21,26 +22,13 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(
-          page: SplashRoute.page,
-          initial: true,
-        ),
-        AutoRoute(
-          page: OnboardingRoute.page,
-        ),
+        AutoRoute(page: SplashRoute.page, initial: true),
+        AutoRoute(page: OnboardingRoute.page),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: RegisterRoute.page),
-        AutoRoute(
-          page: DashboardRoute.page,
-          guards: [_authGuard],
-        ),
-        AutoRoute(
-          page: CVListRoute.page,
-          guards: [_authGuard],
-        ),
-        AutoRoute(
-          page: ImportResumeRoute.page,
-          guards: [_authGuard],
-        ),
+        AutoRoute(page: DashboardRoute.page, guards: [_authGuard]),
+        AutoRoute(page: CVListRoute.page, guards: [_authGuard]),
+        AutoRoute(page: ImportResumeRoute.page, guards: [_authGuard]),
+        AutoRoute(page: BrowseTemplatesRoute.page, guards: [_authGuard]),
       ];
 }

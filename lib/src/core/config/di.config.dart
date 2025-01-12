@@ -19,6 +19,8 @@ import 'package:cv_builder_ai/src/domain/cv/repositories/cv_repository.dart'
     as _i185;
 import 'package:cv_builder_ai/src/domain/onboarding/repositories/onboarding_repository.dart'
     as _i676;
+import 'package:cv_builder_ai/src/domain/template/repositories/template_repository.dart'
+    as _i1052;
 import 'package:cv_builder_ai/src/infrastructure/auth/repositories/auth_repository_impl.dart'
     as _i130;
 import 'package:cv_builder_ai/src/infrastructure/auth/repositories/auth_repository_mockup.dart'
@@ -29,6 +31,8 @@ import 'package:cv_builder_ai/src/infrastructure/cv/repositories/cv_repository_m
     as _i1043;
 import 'package:cv_builder_ai/src/infrastructure/onboarding/repositories/onboarding_repository_mockup.dart'
     as _i1059;
+import 'package:cv_builder_ai/src/infrastructure/template/repositories/mock_template_repository.dart'
+    as _i842;
 import 'package:cv_builder_ai/src/presentation/router/app_router.dart' as _i421;
 import 'package:cv_builder_ai/src/presentation/router/guards/auth_guard.dart'
     as _i1039;
@@ -61,6 +65,8 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i766.AuthRepository>(() => _i130.AuthRepositoryImpl());
     gh.singleton<_i677.ContentRepository>(() => _i21.ContentRepositoryMockup());
+    gh.singleton<_i1052.TemplateRepository>(
+        () => _i842.MockTemplateRepository());
     gh.factory<String>(
       () => networkModule.baseUrl,
       instanceName: 'baseUrl',

@@ -41,7 +41,9 @@ class QuickActions extends StatelessWidget {
       QuickAction(
         title: context.s.quickActionsBrowseTemplates,
         icon: Icons.style_rounded,
-        onTap: () {},
+        onTap: () {
+          context.pushRoute(BrowseTemplatesRoute());
+        },
       ),
     ];
 
